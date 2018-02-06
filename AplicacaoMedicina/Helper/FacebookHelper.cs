@@ -11,8 +11,8 @@ namespace AplicacaoMedicina.Helper
     {        
         private const string Facebook_GraphAPI_Token = "https://graph.facebook.com/oauth/access_token?";
         private const string Facebook_GraphAPI_Me    = "https://graph.facebook.com/me?";
-        private const string AppID                   = "1115640525247131";
-        private const string facebookAuth            = "caf362eb4e6eadfd6ebdf4f4dec4dec0";
+        private const string AppID                   = "";
+        private const string facebookAuth            = "";
 
         public static string GetUserDate(string token, string accessCode)
         {
