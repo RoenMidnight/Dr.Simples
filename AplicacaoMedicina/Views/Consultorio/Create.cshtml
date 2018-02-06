@@ -1,0 +1,485 @@
+﻿@model AplicacaoMedicina.Models.Consultorio
+
+@{
+    Layout = "";
+    ViewBag.Title = "Create";
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png" />
+    <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>Doutor Simples - Cadastro</title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="apple-touch-icon" sizes="57x57" href="../../Content/img/favicons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="../../Content/img/favicons/apple-touch-icon-60x60.png">
+    <link rel="icon" type="image/png" href="../../Content/img/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="../../Content/img/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="../../Content/img/favicons/manifest.json">
+    <link rel="shortcut icon" href="../../Content/img/favicons/favicon.ico">
+    <meta name="msapplication-TileColor" content="#00a8ff">
+    <meta name="msapplication-config" content="../../Content/img/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" href="../Content/styles.css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+   
+
+    @Styles.Render("~/Content/doctorStyles/css")
+
+    <!--     Fonts and icons     -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+
+    <div id="loading">
+        <div id="spinner"></div>
+    </div>
+
+    <div class="wrapper">
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+
+                    <div class="col-md-12" style="margin-top: 6%;">
+                        <div class="card card-profile">
+
+                            <style>
+                                .title-top {
+                                    width: 100% !important;
+                                }
+
+                                .card-profile .card-avatar {
+                                    max-width: 100%;
+                                    max-height: 130px;
+                                    margin: -50px 0 0 0;
+                                    border-radius: 63px 20px 0 63px;
+                                    text-align: left;
+                                    background-color: limegreen;
+                                    display: inline-flex;
+                                    /*overflow: hidden;*/
+                                    /*box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.42), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);*/
+                                }
+
+                                    .card-profile .card-avatar img {
+                                        max-width: 130px;
+                                        max-height: 130px;
+                                        border-radius: 50%;
+                                        overflow: hidden;
+                                        box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.42), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+                                    }
+
+                                    .card-profile .card-avatar div {
+                                        width: auto;
+                                        margin-top: 45px !important;
+                                        margin-left: 30px !important;
+                                    }
+
+                                    .card-profile .card-avatar div b {
+                                        font-size: 2em;
+                                    }
+
+                                    input[type=number]::-webkit-outer-spin-button,
+                                    input[type=number]::-webkit-inner-spin-button {
+                                        -webkit-appearance: none;
+                                        margin: 0;
+                                    }
+
+                                    input[type=number] {
+                                        -moz-appearance:textfield;
+                                    }
+
+                                   .error{
+                                        color: #c13434 !important
+                                    }
+                            </style>
+
+                            <div class="card-avatar title-top">
+                                <img class="img" src="../Content/images/clinic_icon_fill.png" />
+                                <div>
+                                    <b>Cadastro - Consultorio</b>
+                                    <p>Bem vindo ao Doutor Simples.</p>
+                                </div>
+                            </div>
+
+                            <div class="content">
+
+                                <style>
+                                    .row {
+                                        width: 90% !important;
+                                        padding-left: 10% !important;
+                                        padding-right: 0px !important;
+                                        margin: 0;
+                                    }
+
+                                    .control-label {
+                                        left: 0;
+                                    }
+                                </style>
+                                <h6 class="category text-gray"></h6>
+                                <div class="card-content">
+
+                                    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "signUp" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">Responsável</label>
+                                                    @Html.EditorFor(model => model.Responsavel_Consu, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Responsavel_Consu, "", new { @class = "text-danger" })
+                                                    <span class="material-input"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">E-Mail</label>
+                                                    @Html.EditorFor(model => model.Email_Consu, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Email_Consu, "", new { @class = "text-danger" })
+                                                    <span class="material-input"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">CNPJ</label>
+                                                    @Html.EditorFor(model => model.CNPJ_Consu, new { htmlAttributes = new { @class = "form-control"} })
+                                                    @Html.ValidationMessageFor(model => model.CNPJ_Consu, "", new { @class = "text-danger" })
+                                                    <span class="material-input"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">Nome Consultório</label>
+                                                    @Html.EditorFor(model => model.Nome_Consu, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Nome_Consu, "", new { @class = "text-danger" })
+                                                    <span class="material-input"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">Razão Social</label>
+                                                    @Html.EditorFor(model => model.Razao_Consu, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Razao_Consu, "", new { @class = "text-danger" })
+                                                    <span class="material-input"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">CEP</label>
+                                                    @Html.EditorFor(model => model.CEP_Consu, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.CEP_Consu, "", new { @class = "text-danger" })
+                                                    <span class="material-input"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">Endereço</label>
+                                                    @Html.EditorFor(model => model.Endereco_Consu, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Endereco_Consu, "", new { @class = "text-danger" })
+                                                    <span class="material-input"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+
+                                            <div class="col-md-3">
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">Bairro</label>
+                                                    @Html.EditorFor(model => model.Bairro_Consu, new { htmlAttributes = new { @class = "form-control", @minlength = 5 } })
+                                                    @Html.ValidationMessageFor(model => model.Bairro_Consu, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">Numero</label>
+                                                    @Html.EditorFor(model => model.Numero_Consu, new { htmlAttributes = new { @class = "form-control", @type = "number" } })
+                                                    @Html.ValidationMessageFor(model => model.Numero_Consu, "", new { @class = "text-danger" })
+                                                    <span class="material-input"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">Cidade</label>
+                                                    @Html.EditorFor(model => model.Cidade_Consu, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Cidade_Consu, "", new { @class = "text-danger" })
+                                                    <span class="material-input"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">Estado</label>
+                                                    @Html.EditorFor(model => model.Estado_Consu, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Estado_Consu, "", new { @class = "text-danger" })
+                                                    <span class="material-input"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">                                          
+
+                                            <div class="col-md-4">
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">Telefone</label>
+                                                    @Html.EditorFor(model => model.Telefone_Consu, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Telefone_Consu, "", new { @class = "text-danger" })
+                                                    <span class="material-input"></span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Descrição do Consultorio</label>
+                                                        <textarea class="form-control" rows="5" id="Descricao_Consu" name="Descricao_Consu"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">Senha</label>
+                                                    <input type="password" name="Senha_UsuCons" id="Senha_UsuCons" class="form-control" />
+                                                    <span class="material-input"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">Confirmar Senha</label>
+                                                    <input type="password" id="Confirma_UsuCons" class="form-control" />
+                                                    <span class="material-input"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group label-floating">
+                                                    <span class="field-validation-error text-danger" data-valmsg-for="Senha_UsuCons" data-valmsg-replace="true"><p id="valida" style="visibility:hidden;">Senhas não coincidem</p></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <button id="send" type="submit" class="btn btn-primary pull-center">Cadastrar</button>
+
+
+                                            <div class="clearfix"></div>
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/doctorScripts")
+@Scripts.Render("~/bundles/date")
+@Scripts.Render("~/bundles/inputmask")
+
+
+<script>
+    $(document).ready(function(){
+        $("#Telefone_Consu").inputmask({ "mask": "(99) [9]9999-9999", "placeholder": "" });
+        $("#CEP_Consu").inputmask({ "mask": "99999-999", "placeholder": "" });
+        $("#CPF_Consu").inputmask({ "mask": "999.999.999-99", "placeholder": "" });
+        $("#CNPJ_Consu").inputmask({ "mask": "99.999.999/9999-99", "placeholder": "" });
+    });
+</script>
+
+
+<script>
+  
+    $(document).ready(function () {
+
+        
+        $(document).ajaxStart(function () {
+            $("#loading").attr("style", "visibility: visible");
+        }).ajaxStop(function () {
+            $("#loading").attr("style", "visibility: hidden");
+        });
+
+        $("#CEP_Consu").on("blur", function () {
+
+            var url = "https://viacep.com.br/ws/" + $("#CEP_Consu").val().replace(/\D/g, '') + "/json/?callback=";
+
+            console.log(url);
+
+            $.ajax({
+                url: url,
+                type: 'GET',
+                success: function (dados) {
+
+                    var end = dados.logradouro + " " + dados.complemento;
+
+                    console.log(dados);
+
+                    if (dados.erro != true) {
+                        $("#Cidade_Consu").val(dados.localidade);
+                        $("#Estado_Consu").val(dados.uf);
+                        $("#Endereco_Consu").val(end);
+                        $("#Bairro_Consu").val(dados.bairro);
+
+                        $("#Cidade_Consu").parent().removeClass("is-empty");
+                        $("#Estado_Consu").parent().removeClass("is-empty");
+                        $("#Endereco_Consu").parent().removeClass("is-empty");
+                        $("#Bairro_Consu").parent().removeClass("is-empty");
+
+                    } else {
+                        $("#Cidade_Paci").val("");
+                        $("#Estado_Paci").val("");
+                        $("#Endereco_Paci").val("");
+                        $("#Bairro_Consu").val("");
+                    }
+
+
+                }, error: function (x, y, err) {
+                    alert("Operação não efetuada");
+                }
+            });
+
+        });
+
+
+
+        $("#signUp").validate({
+            rules: {
+                Email_Consu: {
+                    required: true,
+                    minlength: 10,
+                    email: true
+                },
+                Nome_Consu: {
+                    required: true,
+                    minlength: 5
+                },
+                Telefone_Consu: {
+                    minlength: 14
+                },
+                CEP_Consu: {
+                    required: true,
+                    minlength: 8
+                },
+                Endereco_Consu: {
+                    required: true,
+                    minlength: 5
+                },
+                Cidade_Consu: {
+                    required: true,
+                    minlength: 5
+                },
+                Estado_Consu: {
+                    required: true,
+                    minlength: 2
+                },
+                CNPJ_Consu: {
+                    required: true,
+                    minlength: 12
+                },
+                Razao_Consu: {
+                    required: true,
+                    minlength: 4
+                },
+                Senha_UsuCons: {
+                    required: true,
+                    minlength: 5
+                },
+                Confirma_UsuCons: {
+                    required: true,
+                    minlength: 5,
+                    equalTo: "#Senha_UsuPaci"
+                },
+                Responsavel_Consu: {
+                    required: true,
+                    minlength: 5
+                }
+            },
+            messages: {
+                Responsavel_Consu: {
+                    required: "Campo Responsável necessário"
+                },
+                Email_Consu: {
+                    required: "Campo E-Mail necessário",
+                    minlength: jQuery.validator.format("Por favor, insira ao menos 10 caracteres"),
+                    email: "Por favor, entre com um E-mail válido"
+                },
+                Nome_Consu: {
+                    required: "Campo Nome necessário",
+                    minlength: jQuery.validator.format("Por favor, insira ao menos 5 caracteres")
+                },
+                Telefone_Consu: {
+                    minlength: jQuery.validator.format("Por favor, insira ao menos 10 caracteres")
+                },
+                CEP_Consu: {
+                    required: "Campo CEP necessário",
+                    minlength: jQuery.validator.format("Por favor, insira ao menos 9 caracteres")
+                },
+                Endereco_Consu: {
+                    required: "Campo Endereço necessário",
+                    minlength: jQuery.validator.format("Por favor, insira ao menos 5 caracteres")
+                },
+                Cidade_Consu: {
+                    required: "Campo Cidade necessário",
+                    minlength: jQuery.validator.format("Por favor, insira ao menos 5 caracteres")
+                },
+                Estado_Consu: {
+                    required: "Campo Estado necessário",
+                    minlength: jQuery.validator.format("Por favor, insira ao menos 2 caracteres")
+                },
+                CNPJ_Consu: {
+                    required: "Campo CNPJ necessário",
+                    minlength: jQuery.validator.format("Por favor, insira ao menos 5 caracteres")
+                },
+                Razao_Consu: {
+                    required: "Campo Razao necessário",
+                    minlength: jQuery.validator.format("Por favor, insira ao menos 4 caracteres")
+                },
+                Senha_UsuCons: {
+                    required: "Por favor insira a Senha",
+                    minlength: "Senha muito curta"
+                },
+                Confirma_UsuCons: {
+                    required: "Por favor confirme sua Senha",
+                    minlength: "Senha muito curta",
+                    equalTo: "Senhas não coincidem"
+                }
+            }
+        });
+
+    });
+
+
+</script>
+
+</html>
+
+

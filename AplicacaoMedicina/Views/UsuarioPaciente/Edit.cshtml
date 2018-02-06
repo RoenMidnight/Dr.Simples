@@ -1,0 +1,82 @@
+﻿@model AplicacaoMedicina.Models.UsuarioPaciente
+
+
+@{
+    Layout = null;
+}
+<div class="modal-header">
+    <h4>Trocar Senha de Usuário</h4>
+</div>
+<div class="modal-body">
+
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "signUp" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id_UsuPaci)
+            @Html.HiddenFor(model => model.Usuario_UsuPaci)
+            @Html.HiddenFor(model => model.ID_Paci)
+
+
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group label-floating">
+                        <label class="control-label">Nova Senha</label>
+                        @Html.PasswordFor(model => model.Senha_UsuPaci, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="col-md-1">
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group label-floating">
+                        <label class="control-label">Confirmar Senha</label>
+                        <input type="password" id="Confirma_UsuPaci" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group label-floating">
+                        <span class="field-validation-error text-danger" data-valmsg-for="Senha_UsuPaci" data-valmsg-replace="true">
+                            <p id="valida" style="visibility:hidden;">Senhas não coincidem</p>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-offset-2 col-md-10">
+                    <input id="send" type="submit" value="Trocar Senha" class="btn btn-primary pull-right" />
+                </div>
+            </div>
+                       
+
+        </div>
+    }
+</div>
+
+<script>
+        $("#send").on("click", function () {
+            event.preventDefault();
+
+            if ($("#Senha_UsuPaci").val() == $("#Confirma_UsuPaci").val()) {
+                document.getElementById("signUp").submit();
+            } else {
+                $("#valida").css("visibility", "visible");
+            }
+
+        });
+
+        $("#Confirma_UsuPaci").on("blur", function () {
+            if ($("#Senha_UsuPaci").val() != $("#Confirma_UsuPaci").val()) {
+                $("#valida").css("visibility", "visible");
+            } else {
+                $("#valida").css("visibility", "hidden");
+            }
+        });
+</script>

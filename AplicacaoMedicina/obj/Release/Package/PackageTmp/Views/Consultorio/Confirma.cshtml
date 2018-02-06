@@ -1,0 +1,253 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutPaciente.cshtml";
+
+    var Nome = ViewBag.NomeConsul;
+    var Tele = ViewBag.TeleConsul;
+    var Ende = ViewBag.EndeConsul;
+
+    var Bair = ViewBag.BairConsul;
+    var Cida = ViewBag.CidaConsul;
+    var Esta = ViewBag.EstaConsul;
+
+    var Dia  = ViewBag.Dia;
+    var Mes  = ViewBag.Mes;
+    var Ano  = ViewBag.Ano;
+
+    var Avaliacao = ViewBag.Avaliacao;
+
+}
+
+
+<div class="content">
+    <div class="container-fluid">
+
+        <style>
+            .cardText {
+                font-size: 13px;
+            }
+        </style>
+
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header" data-background-color="green">
+                        <i class="material-icons">local_hospital</i>
+                    </div>
+                    <div class="card-content">
+                        <p class="category" style="color:black">Consultorio</p>
+                        <h4 class="title"><b id="consuContent"> @Nome</b></h4>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats" style="color:black">
+                            <p class="cardText">
+                                <a href="tel://@Tele">
+                                    <i class="material-icons" style="top:0px">phone</i> @Tele
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="card card-stats card-medico">
+                    <div class="card-header" data-background-color="green">
+                        <i class="material-icons">person</i>
+                    </div>
+                    <div class="card-content">
+                        <p class="category data-medico" style="color:black">Médico</p>
+                        <h4 class="title">
+                            <small></small><b id="medicContent">
+                                @Html.DropDownList("ID_MediConsu", new SelectList(ViewBag.ID_MediConsu, "Id", "Display"), new { @class = "form-control" })
+                            </b>
+                            <style>
+                                .form-control{
+                                    width:70%;
+                                    max-width: calc( 90% - 86px );
+                                    font-size: large;
+                                }
+
+                                 .card-medico{
+                                    background-color:  cornflowerblue;
+                                }
+
+                                .data-medico{
+                                    color: white!important;
+                                }                                
+
+                                .col-md-12{
+                                    height: 178px;
+                                }
+                            </style>
+                        </h4>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats" style="color:black">
+                            <p class="cardText">
+                                <i class="material-icons">list</i>
+                                @ViewBag.Especializ
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>           
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header" data-background-color="green">
+                        <i class="material-icons">place</i>
+                    </div>
+                    <div class="card-content">
+                        <p class="category" style="color:black">Endereço</p>
+                        <h4 class="title"><b>@Ende</b> <small></small></h4>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats" style="color:black">
+                            <p class="cardText">
+                                <i class="material-icons">place</i> @Bair, @Cida - @Esta
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header" data-background-color="green">
+                        <i class="material-icons">star</i>
+                    </div>
+                    <div class="card-content">
+                        <p class="category" style="color:black">Avaliação</p>
+                        <h4 class="title" style="color:black"><b>@ViewBag.Avaliacao</b></h4>
+                    </div>
+                    <div class="card-footer" style="color:black">
+                        <div class="stats" style="color:black">
+                            @if (ViewBag.Avaliacao == 0)
+                            {
+                                <p class="cardText">
+                                    <i class="material-icons">star</i> Não existem avaliações desse local!
+                                </p> }
+                            @if (ViewBag.Avaliacao == 1)
+                            {
+                                <p class="cardText">
+                                    <i class="material-icons">star</i> As pessoas não gostam desse local!
+                                </p> }
+                            @if (ViewBag.Avaliacao == 2)
+                            {
+                                <p class="cardText">
+                                    <i class="material-icons">star</i> As pessoas gostam pouco desse local!
+                                </p> }
+                            @if (ViewBag.Avaliacao == 3)
+                            {
+                                <p class="cardText">
+                                    <i class="material-icons">star</i> As pessoas gostam desse local!
+                                </p> }
+                            @if (ViewBag.Avaliacao == 4)
+                            {
+                                <p class="cardText">
+                                    <i class="material-icons">star</i> As pessoas gostam muito desse local!
+                                </p> }
+                            @if (ViewBag.Avaliacao == 5)
+                            {
+                                <p class="cardText">
+                                    <i class="material-icons">star</i> As pessoas amam esse local!
+                                </p> }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <style>
+                    .btn, .navbar .navbar-nav > li > a.btn {
+                        border: none;
+                        border-radius: 5px;
+                        position: relative;
+                        padding: 20px 25px;
+                        margin: 10px 8px;
+                        font-size: 15px;
+                        font-weight: 400;
+                        text-transform: uppercase;
+                        letter-spacing: 0;
+                        will-change: box-shadow, transform;
+                        transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+                    }
+
+                    #cardData {
+                        padding-bottom: 15px;
+                    }
+                </style>
+                                
+                <div class="card card-nav-tabs" id="cardData">
+                    <div class="card-header" data-background-color="purple">
+                        <div class="nav-tabs-navigation">
+                            <div class="nav-tabs-wrapper">
+                                <span class="nav-tabs-title">Quando você deseja consultar?</span>
+                                <ul class="nav nav-tabs" data-tabs="tabs">
+                                    <li class="active">
+
+                                    </li>
+                                    <li class="">
+
+                                    </li>
+                                    <li class="">
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-content">
+                        <div class="tab-content">
+                            <div class="tab-pane active">
+
+                                <div class="col-md-offset-2 col-lg-8" style="height:100%!important">
+                                    <div class="row">
+                                        <div class="col-md-8 col-md-offset-2">
+
+                                            <div class="row text-center">
+
+                                                <md-input-container flex-gt-md="30">
+                                                    <input time="false" date="true" mdc-datetime-picker="" type="text" id="Data_Cons"
+                                                           date="DD/MM/YYYY" format="DD/MM/YYYY" ng-change="testeData()"
+                                                           placeholder="Data" ng-model="date" min-date="minDate" max-date="maxDate" class=" md-input">
+                                                </md-input-container>
+
+                                                <md-icon id="iconClick" class="material-icons">date_range</md-icon>
+
+
+
+                                                @if (ViewBag.Error)
+                                                {
+                                                    <p class="field-validation-valid text-danger">Horário Inválido</p>
+                                                }
+                                            </div>
+
+
+                                            <div>
+                                                <div>
+                                                    <h5 style="text-align:center">Horários Disponíveis:</h5>
+                                                </div>
+                                                <div id="conteuHorar" class="row text-center">
+                                                    
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

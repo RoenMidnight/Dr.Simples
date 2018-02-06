@@ -1,0 +1,40 @@
+﻿@model IEnumerable<AplicacaoMedicina.Models.AreaConsultorio>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutMedico.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Consultorio.Nome_Consu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome_Area)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Consultorio.Nome_Consu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome_Area)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_Area }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_Area }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_Area })
+        </td>
+    </tr>
+}
+
+</table>

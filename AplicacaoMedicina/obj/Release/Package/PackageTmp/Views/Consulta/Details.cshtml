@@ -1,0 +1,49 @@
+﻿@model AplicacaoMedicina.Models.DetalheConsulta
+
+@{ 
+    Layout = "";
+}
+
+<div class="modal-header">
+<h4><b>Informações da Consulta</b></h4>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-12">   
+            <dl>                
+                <dt> <div class="table-like"><b>Data da Consulta:</b></div><div class="table-like">@Html.DisplayFor(model => model.Consulta.Data_Consa)      </div> </dt>
+                <dt> <div class="table-like"><b>Status:</b></div><div class="table-like">@Html.DisplayFor(model => model.Consulta.Situacao_Consa)</div> </dt>
+                <dt> <div class="table-like"><b>Data da Requisição:</b></div><div class="table-like">@Html.DisplayFor(model => model.Consulta.DtMarc_Consa)      </div> </dt>
+            </dl>
+            <hr />
+            <h4><b><span class="glyphicon glyphicon-plus"></span> Consultório</b></h4>
+            <dl>
+                <dt> <div class="table-like"><b>Consulório:</b></div>  <div class="table-like">@Html.DisplayFor(model => model.Consulta.MedicoConsultorio.Consultorio.Nome_Consu)        </div></dt>
+                <dt> <div class="table-like"><b>Número:</b>    </div>  <div class="table-like">@Html.DisplayFor(model => model.Consulta.MedicoConsultorio.Consultorio.Numero_Consu)      </div></dt>
+                <dt> <div class="table-like"><b>Telefone:</b></div>    <div class="table-like">@Html.DisplayFor(model => model.Consulta.MedicoConsultorio.Consultorio.Telefone_Consu)    </div></dt>
+                <dt> <div class="table-like"><b>E-Mail:</b></div>      <div class="table-like">@Html.DisplayFor(model => model.Consulta.MedicoConsultorio.Consultorio.Email_Consu)       </div></dt>
+                <dt> <div class="table-like"><b>Responsável:</b></div> <div class="table-like">@Html.DisplayFor(model => model.Consulta.MedicoConsultorio.Consultorio.Responsavel_Consu) </div></dt>
+            </dl>
+            <hr />
+            <h4><b><span class="glyphicon glyphicon-user"></span> Médico</b></h4>
+            <dl>
+                <dt> <div class="table-like"><b>Médico:</b>  </div><div class="table-like">    @Html.DisplayFor(model => model.Consulta.MedicoConsultorio.Medico.Nome_Medi)      </div> </dt>
+                <dt> <div class="table-like"><b>CRO:</b>     </div><div class="table-like">    @Html.DisplayFor(model => model.Consulta.MedicoConsultorio.Medico.CRM_Medi)       </div> </dt>
+                <dt> <div class="table-like"><b>Área:</b>    </div><div class="table-like">    @Html.DisplayFor(model => model.MedicoArea.Area.Nome_Area)                        </div> </dt>
+            </dl>
+        </div>
+    </div>
+</div>
+
+<style>
+    .table-like {
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+        min-width: 130px;
+    }
+    dt{
+        font-weight:normal;
+    }
+    
+</style>

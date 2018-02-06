@@ -1,0 +1,42 @@
+﻿@model AplicacaoMedicina.Models.UsuarioPaciente
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>UsuarioPaciente</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Pacientes.Nome_Paci)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pacientes.Nome_Paci)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usuario_UsuPaci)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usuario_UsuPaci)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Senha_UsuPaci)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Senha_UsuPaci)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id_UsuPaci }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

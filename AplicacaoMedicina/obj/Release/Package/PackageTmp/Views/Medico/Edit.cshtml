@@ -1,0 +1,212 @@
+﻿@model AplicacaoMedicina.Models.MedicoConsultorio
+
+<div class="modal-header">
+    <h4>Editar Médico</h4>
+</div>
+<div class="modal-body">
+
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "edit" }))
+    {
+        @Html.AntiForgeryToken();
+
+        <div class="form-horizontal">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.ID_Medi)
+            @Html.HiddenFor(model => model.Medico.ID_Medi)
+            @Html.HiddenFor(model => model.ID_MediConsu)
+            @Html.HiddenFor(model => model.ID_Consu)
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group label-floating">
+                        <label class="control-label">Nome</label>
+                        @Html.EditorFor(model => model.Medico.Nome_Medi, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Medico.Nome_Medi, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group label-floating">
+                        <label class="control-label">CRO</label>
+                        @Html.EditorFor(model => model.Medico.CRM_Medi, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Medico.CRM_Medi, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group label-floating">
+                        <label class="control-label">E-Mail</label>
+                        @Html.EditorFor(model => model.Medico.Email_Medi, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Medico.Email_Medi, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group label-floating">
+                        <label class="control-label">Telefone</label>
+                        @Html.EditorFor(model => model.Medico.Telefone_Medi, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Medico.Telefone_Medi, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>            
+                     
+            <div class="row">
+                <div class="col-md-12">                
+                    <div class="form-group label-floating">
+                        <label class="control-label">Convênio</label>
+                        <input type="text" class="bootstrap-tagsinput form-control" data-role="none" id="ID_Conv" name="ID_Conv" />
+
+                        <span class="material-input"></span>
+                    </div>                        
+                </div>
+            </div>
+            
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group label-floating">
+                        <label class="control-label">Valor</label>
+                        @Html.EditorFor(model => model.Medico.Valor_Medi, new { htmlAttributes = new { @class = "form-control", @type="number" } })
+                        @Html.ValidationMessageFor(model => model.Medico.Valor_Medi, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group label-floating">
+                        <label class="control-label">Ativo</label>
+                        <div class="checkbox">
+                            <label>
+                                @Html.CheckBoxFor(model => model.ativo, new { @name = "optionsCheckboxes" })
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" class="btn btn-primary pull-right"> Alterar Médico </button>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<style>
+    input[type=number]::-webkit-outer-spin-button,
+    input[type=number]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+</style>
+
+@Scripts.Render("~/bundles/doctorScripts")
+
+<script>
+    $(document).ready(function () {
+
+        var convMed = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            prefetch: '../Medico/GetConvenios'
+        });
+
+        convMed.initialize();
+
+        $("#ID_Conv").tagsinput({
+            itemValue: 'value',
+            itemText: 'text',
+            typeaheadjs:{
+                name: 'convMed',
+                displayKey: 'text',
+                source: convMed.ttAdapter()
+            }
+        });
+
+        var preAr = @Html.Raw(Json.Encode(@ViewBag.Conveni));
+
+        for(i = 0; i <= preAr.length-1; ++i){
+            $("#ID_Conv").tagsinput('add', {"text": preAr[i].Convenio.Nome_Conv, "value": preAr[i].Convenio.ID_Conv  });
+        }
+
+
+
+        $("#edit").validate({
+            rules:
+            {
+                Email_Medi:
+                {
+                    required: true,
+                    minlength: 10,
+                    email: true
+                },
+                CRM_Medi:
+                {
+                    required: true
+                },
+                Telefone_Medi:
+                {
+                    minlength: 10,
+                    maxlength: 15
+                },
+                Nome_Medi:
+                {
+                    required: true,
+                    minlength: 4
+                },
+                TipoInscri_Medi:
+                {
+                    required: true
+
+                }
+            },
+            messages:
+            {
+                Nome_Medi:
+                {
+                    required: "Campo Nome requerido"
+                },
+                Email_Medi:
+                {
+                    required: "Campo E-Mail requerido",
+                    minlength: jQuery.validator.format("Por favor, insira ao menos 10 caracteres"),
+                    email: "Por favor, entre com um E-mail válido"
+                },
+                Telefone_Medi:
+                {
+                    minlength: jQuery.validator.format("Por favor, insira ao menos 10 caracteres")
+                },
+                CRM_Medi:
+                {
+                    required: "Campo CRO requerido"
+                },
+                TipoInscri_Medi:
+                {
+                    required: "Campo Tipo Inscrição requerido"
+                }
+            }
+        });
+    });
+
+    $(document).on("")
+</script>
+<style>
+    .error {
+        color: #c13434 !important;
+    }
+</style>
+
+

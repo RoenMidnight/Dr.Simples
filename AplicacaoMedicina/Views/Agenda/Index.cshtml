@@ -1,0 +1,38 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutMedico.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header" data-background-color="purple">
+                <h4 class="title">Agenda - @ViewBag.NomeMedico</h4>
+                <p class="category">Preencha os Dados</p>
+            </div>
+            <div class="card-content">
+
+                @using (Html.BeginForm("Create", "Agenda", FormMethod.Post, new { id = "cadastrar" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <input type="hidden" name="ID_MediConsul" id="ID_MediConsul" value="@ViewBag.ID_MediConsul" />
+                    <input type="hidden" name="ID_MediConsul" id="Redirect" value="@ViewBag.Redirect" />
+
+                    <div id="calendar"></div>
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                                                
+                                    <button id="submit" type="submit" value="Save" class="btn btn-primary pull-right">Atualizar Agenda</button>
+                                
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

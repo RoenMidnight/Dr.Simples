@@ -1,0 +1,78 @@
+﻿@model IEnumerable<AplicacaoMedicina.Models.Consulta>
+
+@{
+    Layout = "~/Views/Shared/_LayoutMedico.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+      
+        <div class="card">
+            <div class="card-header" data-background-color="purple">
+                <h4 class="title">Pacientes pendentes</h4>
+                <p class="category">Lista de pedidos de atendimentos ainda não respondidos</p>
+            </div>
+
+            <div class="card-content table-responsive">
+  
+                            <table class="table">
+                                <thead class="text-primary">
+                                    <tr>
+                                        <th>
+                                            <b>Nome</b>
+                                        </th>
+                                        <th>
+                                            <b>Telefone</b>
+                                        </th>
+                                        <th>
+                                            <b>Cidade</b>
+                                        </th>
+                                        <th>
+                                            <b>Ação</b>
+                                        </th>                                  
+                                    </tr>
+                                </thead>
+                                <style>
+                                    .btn-acao{
+
+                                    padding-left: 0px!important;
+                                    padding-right: 0px!important;
+                                    }
+
+                                    .btn-acao i{
+                                    font-size: x-large!important;
+                                    }
+                                </style>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Paciente.Nome_Paci)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Paciente.Telefone_Paci)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Paciente.Cidade_Paci)
+                                            </td>                                          
+                                            <td class="text-primary">
+                                                <a href="@Url.Action("Edit","Medico", new { id = item.ID_Consa})" data-target=".inbox-body" class="consulta">
+                                                    <button type="button" rel="tooltip" title class="btn btn-primary btn-simple btn-xs btn-acao" data-original-title="Aceitar">
+                                                        <i class="material-icons">check_circle</i>
+                                                    </button>
+                                                </a>
+                                                <a href="@Url.Action("Edit","Consulta", new { id = item.ID_Consa})" data-target=".inbox-body" class="consulta">
+                                                    <button type="button" rel="tooltip" title class="btn btn-danger btn-simple btn-xs btn-acao" data-original-title="Cancelar">
+                                                        <i class="material-icons">cancel</i>
+                                                    </button>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>

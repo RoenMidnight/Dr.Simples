@@ -1,0 +1,54 @@
+﻿@model  IEnumerable<AplicacaoMedicina.Models.Confirma>
+
+@{
+    Layout = "";
+}
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" id="closeModal">&times;</button>
+    <h4>Médicos atendendo em @ViewBag.Consultorio</h4>
+</div>
+
+<div class="modal-body">
+
+    <div class="content">
+        <div class="container-fluid">        
+        
+        <style>
+            #rowrow .row {
+                box-shadow: 0px 2px 1px 1px rgba(187, 187, 187, 0.5);
+                margin: 10px;
+                height: 2em;
+                line-height: 2em;
+            }
+
+
+                #rowrow .row a {
+                    color: black;
+                }
+
+            .setend {
+                text-align: end;
+            }
+        </style>
+        
+         <div class="row" id="rowrow">
+                @foreach (var item in Model)
+                {
+                    <div class="row">
+                        <a href="@Url.Action("Confirma","Paciente", new { id = item.MedicoConsultorio.ID_MediConsu, redirect=false })">
+                            <div class="col-md-7">                                
+                               @item.MedicoConsultorio.Medico.Nome_Medi                           
+                            </div>
+                            <div class="col-md-5 setend">                                
+                               @item.MedicoArea.Area.Nome_Area                               
+                            </div>
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+
+    </div>
+</div>
+                    

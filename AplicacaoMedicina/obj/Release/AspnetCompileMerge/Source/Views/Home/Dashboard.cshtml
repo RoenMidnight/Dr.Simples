@@ -1,0 +1,197 @@
+﻿@model IEnumerable<AplicacaoMedicina.Models.Consulta>
+
+@{
+
+    Layout = "~/Views/Shared/_LayoutMedico.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-4 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header" data-background-color="red">
+                <i class="material-icons">person_add</i>
+            </div>
+            <div class="card-content">
+                <p class="category">Novos Agendamentos</p>
+                <h3 class="title">@ViewBag.NovosAGen</h3>
+            </div>
+            <div class="card-footer">
+                <div class="stats">
+                    <i class="material-icons ">warning</i> Não deixe seus clientes esperando
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header" data-background-color="green">
+                <i class="material-icons">perm_contact_calendar</i>
+            </div>
+            <div class="card-content">
+                <p class="category">Pacientes Hoje</p>
+                <h3 class="title">@ViewBag.PaciToday</h3>
+            </div>
+            <div class="card-footer">
+                <div class="stats">
+                    <i class="material-icons">date_range</i> Dia da Semana
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header" data-background-color="blue">
+                <i class="material-icons">star</i>
+            </div>
+            <div class="card-content">
+                <p class="category">Nota</p>
+                <h3 class="title">@ViewBag.Avaliacao</h3>
+            </div>
+            <div class="card-footer">
+                <div class="stats">
+                    <i class="material-icons">search</i> Veja o que seus pacientes tem dito de você!
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@if (ViewBag.NumMedi == 0){
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="card card-nav-tabs">
+                <div class="card-header" data-background-color="purple">
+                    <div class="nav-tabs-navigation">
+                        <div class="nav-tabs-wrapper">                            
+                            <ul class="nav nav-tabs" data-tabs="tabs">
+                                <li class="active">
+                                    <a href="#profile" data-toggle="tab">
+                                        <i class="material-icons">assignment_ind</i>
+                                            Consultas
+                                        <div class="ripple-container"></div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="profile">
+                            <h4>Sem consultas agendadas</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+@foreach (var med in ViewBag.Medicos){    
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="card card-nav-tabs">
+                    <div class="card-header" data-background-color="purple">
+                        <div class="nav-tabs-navigation">
+                            <div class="nav-tabs-wrapper">
+                                <span class="nav-tabs-title">Médico:</span>
+                                <ul class="nav nav-tabs" data-tabs="tabs">
+                                    <li class="active">
+                                        <a href="#profile" data-toggle="tab">
+                                            <i class="material-icons">assignment_ind</i>
+                                                @med
+                                            <div class="ripple-container"></div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="profile">
+                                <table class="table">
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            if (item.Situacao_Consa == "Confirmado" &&
+                                                item.MedicoConsultorio.Medico.Nome_Medi == med)
+                                            {
+                                                <tr>
+                                                    <td>@Html.DisplayFor(modelItem => item.Data_Consa)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.Paciente.Nome_Paci)</td>
+                                                    <td class="td-actions text-right">
+                                                        <a href="@Url.Action("Edit", "Consulta", new { id = item.ID_Consa, acao = "Recusado" })" data-target=".inbox-body" class="consulta">
+                                                            <button type="button" rel="tooltip" title="Cancelar" class="btn btn-danger btn-simple btn-xs">
+                                                                <i class="material-icons">close</i>
+                                                            </button>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+}
+
+
+
+<div class="row">
+    <div class="col-lg-12 col-md-12">
+        <div class="card">
+            <div class="card-header" data-background-color="orange">
+                <h4 class="title">Pedidos de consulta em espera</h4>
+                <p class="category">Pacientes requisitando consulta</p>
+            </div>
+            <div class="card-content table-responsive">
+                <table class="table table-hover">
+                    <thead class="text-warning">
+                    <th>Nome</th>
+                    <th>Data</th>
+                    <th>Médico</th>
+                    <th>Ação</th>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            if (item.Situacao_Consa == "Em Espera")
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(modelItem => item.MedicoConsultorio.Medico.Nome_Medi)</td>
+
+                                    <td>@Html.DisplayFor(modelItem => item.Data_Consa)</td>
+
+                                    <td>@Html.DisplayFor(modelItem => item.MedicoConsultorio.Consultorio.Nome_Consu)</td>
+                                                                        
+                                    <td class="td-actions text-right">
+                                        <a href="@Url.Action("Edit", "Consulta", new { id = item.ID_Consa, acao = "Confirmado" })" data-target=".inbox-body" class="consulta">
+                                            <button type="button" rel="tooltip" title="Dados da Consulta" class="btn btn-primary btn-simple btn-xs">
+                                                <i class="material-icons">check</i>
+                                            </button>
+                                        </a>                                       
+                                        <a href="@Url.Action("Edit", "Consulta", new { id = item.ID_Consa, acao = "Recusado" })" data-target=".inbox-body" class="consulta">
+                                            <button type="button" rel="tooltip" title="Cancelar" class="btn btn-danger btn-simple btn-xs">
+                                                <i class="material-icons">close</i>
+                                            </button>
+                                        </a>
+                                    </td>
+                                    
+                                </tr>
+                            }
+                        }
+
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

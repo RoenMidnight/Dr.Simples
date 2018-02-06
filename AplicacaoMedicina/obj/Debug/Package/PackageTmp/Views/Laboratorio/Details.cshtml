@@ -1,0 +1,122 @@
+﻿@model AplicacaoMedicina.Models.Laboratorio
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Laboratorio</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Tipo.Nome_Tipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tipo.Nome_Tipo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome_Labo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome_Labo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CNPJ_Labo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CNPJ_Labo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CEP_Labo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CEP_Labo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Endereco_Labo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco_Labo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Numero_Labo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Numero_Labo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Complemento_Labo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Complemento_Labo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bairro_Labo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bairro_Labo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cidade_Labo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cidade_Labo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado_Labo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado_Labo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Responsavel_Labo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Responsavel_Labo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefone_Labo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefone_Labo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email_Labo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email_Labo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_Labo }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

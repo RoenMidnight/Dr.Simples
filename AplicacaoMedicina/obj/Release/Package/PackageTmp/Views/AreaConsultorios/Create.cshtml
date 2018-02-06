@@ -1,0 +1,78 @@
+﻿@model AplicacaoMedicina.Models.AreaConsultorio
+
+@{
+    Layout= "";
+}
+
+<div class="modal-header">
+    <h4><b>Nova Área</b></h4>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-12">
+            <dl>
+                @using (Html.BeginForm("Create", "AreaConsultorios", FormMethod.Post, new { id = "edita" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Nome_Area, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Nome_Area, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Nome_Area, "", new { @class = "text-danger" })
+                            </div>
+                        </div>                       
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <button type="submit" value="Cadastrar" class="btn btn-primary pull-right">Cadastrar</button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </dl>
+        </div>
+    </div>
+</div>
+
+<style>
+    .modal-dialog{
+        left: 0px;
+    }
+</style>
+
+<script>
+    $("#edita button").on("click", function (event) {
+        event.preventDefault();
+
+        console.log("entrou");
+
+        var form = document.getElementById("edita");
+        var data = $(form).serialize();
+        var modulo = $("#edita").attr("action");
+
+        console.log(data);
+
+        $.ajax({
+            url: modulo,
+            type: 'POST',
+            data: data,
+            success: function (response) {
+                if (response && response.success) {
+                    $('#myModal').modal('toggle');
+                    $('#ID_Area').append($('<option></option>')
+                        .val(response.message.ID_Consu)
+                        .html(response.message.Nome_Area));
+                } else {
+                    alert("Error");
+                }
+            }, error: function (x, y, err) {
+                alert("Operação não efetuada");
+            }
+        });
+
+    });   
+
+</script>

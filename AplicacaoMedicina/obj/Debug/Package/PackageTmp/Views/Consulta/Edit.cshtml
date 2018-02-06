@@ -1,0 +1,123 @@
+﻿@model AplicacaoMedicina.Models.Consulta
+
+<div class="modal-header">
+    @if (ViewBag.Acao == "Confirmado") { <h4>Confirmar Consulta</h4>
+    } else  { <h4>Cancelar Consulta</h4> }
+
+</div>
+<div class="modal-body">
+
+    @if (ViewBag.Acao == "Confirmado")
+    {
+        using (Html.BeginForm("Edit", "Consulta", FormMethod.Post, new { id = "edita" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.ID_Consa)
+            @Html.HiddenFor(model => model.Notas_Consa)
+            @Html.HiddenFor(model => model.ID_MediConsu)
+            @Html.HiddenFor(model => model.ID_Paci)
+            <input type="hidden" id="Motivo_Consa"   name="Motivo_Consa" value="Confirmado" />
+            <input type="hidden" id="Situacao_Consa" name="Situacao_Consa" value="Confirmado" />
+
+            <div class="row">
+                <h4>Paciente</h4>
+                <br />
+                <dl>
+                    <dt><b>Nome:</b> @Html.DisplayFor(model => model.Paciente.Nome_Paci)                   </dt>
+                    <dt><b>Nome Social:</b> @Html.DisplayFor(model => model.Paciente.NomeSocial_Paci)      </dt>
+                    <dt><b>Data de Nascimento:</b> @Html.DisplayFor(model => model.Paciente.DtNasc_Paci)   </dt>
+                    <dt><b>E-Mail:</b> @Html.DisplayFor(model => model.Paciente.Email_Paci)                </dt>
+                    <dt><b>Telefone:</b> @Html.DisplayFor(model => model.Paciente.Telefone_Paci)           </dt>
+                    <hr />
+                    <h4>Médico</h4>
+                    <br />
+                    <dt><b>Nome:</b> @Html.DisplayFor(model => model.MedicoConsultorio.Medico.Nome_Medi)  </dt>
+                    <dt><b>E-mail:</b> @Html.DisplayFor(model => model.MedicoConsultorio.Medico.Email_Medi)  </dt>
+                    <dt><b>Telefone:</b> @Html.DisplayFor(model => model.MedicoConsultorio.Medico.Telefone_Medi) </dt>
+                    <dt><b>CRM:</b> @Html.DisplayFor(model => model.MedicoConsultorio.Medico.CRM_Medi) </dt>
+                </dl>
+                <hr/>
+                <div class="form-group label-floating">
+                    <label class="control-label">Data da Consulta</label>
+                    <input type="datetime-local" id="Data_Consa" name="Data_Consa" class="form-control" />
+                    @Html.ValidationMessageFor(model => model.Data_Consa, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="button" value="Confirma" class="btn btn-primary pull-right">Confirmar</button>
+                </div>
+            </div>
+        }
+    }
+
+    @if (ViewBag.Acao == "Recusado")
+    {
+        using (Html.BeginForm("Edit", "Consulta", FormMethod.Post, new { id = "edita" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.ID_Consa)
+                @Html.HiddenFor(model => model.Notas_Consa)
+                @Html.HiddenFor(model => model.Data_Consa)
+                @Html.HiddenFor(model => model.ID_MediConsu)
+                @Html.HiddenFor(model => model.ID_Paci)
+                <input type="hidden" name="Situacao_Consa" value="Recusado" />
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group label-floating">
+                            <label class="control-label">Motivo</label>
+                            @Html.EditorFor(model => model.Motivo_Consa, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Motivo_Consa, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-offset-2 col-md-10">
+                        <button type="button" value="Confirma" class="btn btn-primary pull-right">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>
+
+<script>
+    $("#edita button").on("click", function (event) {
+        event.preventDefault();
+
+        console.log("entrou");
+
+        var form = document.getElementById("edita");
+        var data = $(form).serialize();
+        var modulo = $("#edita").attr("action");
+
+        console.log(data);
+
+        $.ajax({
+            url: modulo,
+            type: 'POST',
+            data: data,
+            success: function (response) {
+                if (response && response.success) {
+                    $('#myModal').modal('toggle');
+                    $('#' + $('#id').val() + '.mail_list').remove();
+                    $('.interior').remove();
+
+                } else {
+                    alert("Error");
+                }
+            }, error: function (x, y, err) {
+                alert("Operação não efetuada");
+            }
+        });
+
+    });
+</script>

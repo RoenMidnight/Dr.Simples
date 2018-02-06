@@ -1,0 +1,131 @@
+﻿@model IEnumerable<AplicacaoMedicina.Models.MedicoConsultorio>
+
+@{
+    Layout = "~/Views/Shared/_LayoutMedico.cshtml";
+    var filtro = ViewBag.Filtro;
+}
+
+<div class="row">
+    <div class="col-md-9">
+
+        <div class="card">
+            <div class="card-header" data-background-color="purple">
+                <h4 class="title">Médicos Cadastrados</h4>
+                <p class="category">Lista de médicos cadastrados pelo seu consultorio</p>
+            </div>
+
+            <div class="card-content table-responsive">
+                <table id="tabela" class="table">
+                    <thead class="text-primary">
+                        <tr>
+                            <th>
+                                <b>Nome</b>
+                            </th>
+                            <th>
+                                <b>Telefone</b>
+                            </th>
+                            <th>
+                                <b>CRO</b>
+                            </th>
+                            <th>
+                                <b>Ativo</b>
+                            </th>
+                            <th>
+                                <b>Ação</b>
+                            </th>                           
+                        </tr>
+                    </thead>
+                    <style>
+                          .btn-acao{
+                           
+                              padding-left: 0px!important;
+                              padding-right: 0px!important;   
+                          }
+                          
+                          .btn-acao i{
+                                  font-size: x-large!important;
+                          }
+                    </style>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Medico.Nome_Medi)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Medico.Telefone_Medi)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Medico.CRM_Medi)
+                                </td>
+                                <td>
+                                    <div class="checkbox">
+                                        <label>
+                                            @Html.DisplayFor(modalItem => item.ativo, new { @name = "optionsCheckboxes" })                                                                               
+                                        </label>
+                                    </div>
+                                </td>
+                                <td class="text-primary">
+                                    <a href="@Url.Action("Edit","Medico", new { id = item.ID_MediConsu})" data-target=".inbox-body" class="consulta">
+                                        <button type="button" rel="tooltip" title class="btn btn-primary btn-simple btn-xs btn-acao" data-original-title="Editar">
+                                            <i class="material-icons">edit</i>
+                                        </button>
+                                    </a>
+                                    <a href="@Url.Action("Index","Agenda", new { id = item.ID_MediConsu})">
+                                        <button type="button" rel="tooltip" title class="btn btn-primary btn-simple btn-xs btn-acao" data-original-title="Agenda">
+                                            <i class="material-icons">date_range</i>
+                                        </button>
+                                    </a>
+                                </td>                              
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <a href="@Url.Action("Create","Medico")" data-target=".inbox-body" class="consulta">
+                    <button type="submit" class="btn btn-primary pull-right">Adicionar Médico</button>
+                </a>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+
+        <div class="card">
+            <div class="card-header" data-background-color="purple">
+                <h4 class="title">Médicos</h4>
+                <p class="category"></p>
+            </div>
+
+            <div class="card-content table-responsive">
+                <dt>      
+                    <dl>
+                        <a href="@Url.Action("Index", "Medico", new { filtro = "Ativo"})">
+                            @if (filtro == "Ativo")
+                            { <i class="material-icons" style="color:#4caf50">label</i> }
+                            Ativo
+                        </a>
+                    </dl>                   
+                    <dl>
+                        <a href="@Url.Action("Index","Medico", new { filtro = "Inativo"})">
+                            @if (filtro == "Inativo")
+                            { <i class="material-icons" style="color:#4caf50">label</i>}
+                            Inativo
+                        </a>
+                    </dl>                    
+                    <dl>
+                        <a href="@Url.Action("Index","Medico")">
+                            @if (filtro == "Ambos")
+                            {<i class="material-icons" style="color:#4caf50">label</i>  }Ambos
+                        </a>
+                    </dl>
+                </dt>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>

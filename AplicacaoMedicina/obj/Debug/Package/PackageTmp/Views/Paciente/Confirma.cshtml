@@ -1,0 +1,191 @@
+﻿@model IQueryable<AplicacaoMedicina.Models.Confirma>
+
+@{
+    Layout = "~/Views/Shared/_LayoutPaciente.cshtml";
+
+    var Nome = ViewBag.NomeConsul;
+    var Tele = ViewBag.TeleConsul;
+    var Medi = ViewBag.NomeMedico;
+    var Ende = ViewBag.EndeConsul;
+
+    var Bair = ViewBag.BairConsul;
+    var Cida = ViewBag.CidaConsul;
+    var Esta = ViewBag.EstaConsul;
+
+    var Dia = ViewBag.Dia;
+    var Mes = ViewBag.Mes;
+    var Ano = ViewBag.Ano;
+}
+
+<div class="content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header" data-background-color="green">
+                        <i class="material-icons">local_hospital</i>
+                    </div>
+                    <div class="card-content">
+                        <p class="category" style="color:black">Consultorio</p>
+                        <h3 class="title"> @Nome</h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats" style="color:black">
+                            <i class="material-icons">phone</i> @Tele
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header" data-background-color="green">
+                        <i class="material-icons">person</i>
+                    </div>
+                    <div class="card-content">
+                        <p class="category" style="color:black">Médico</p>
+                        <h3 class="title"><small></small>@Medi</h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats" style="color:black">
+                            <i class="material-icons">list</i> Especialidades
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header" data-background-color="green">
+                        <i class="material-icons">place</i>
+                    </div>
+                    <div class="card-content">
+                        <p class="category" style="color:black">Endereço</p>
+                        <h3 class="title">@Ende <small></small></h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats" style="color:black">
+                            <i class="material-icons">place</i> @Bair, @Cida - @Esta
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header" data-background-color="green">
+                        <i class="material-icons">star</i>
+                    </div>
+                    <div class="card-content">
+                        <p class="category" style="color:black">Avaliação</p>
+                        <h3 class="title" style="color:black">@ViewBag.Avaliacao</h3>
+                    </div>
+                    <div class="card-footer" style="color:black">
+                        <div class="stats" style="color:black">
+                            <i class="material-icons">star</i> As pessoas gostam muito desse local!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <style>
+                    #cardData {
+                        padding-bottom: 15px;
+                    }
+                </style>
+
+                <div class="card card-nav-tabs" id="cardData">
+                    <div class="card-header" data-background-color="purple">
+                        <div class="nav-tabs-navigation">
+                            <div class="nav-tabs-wrapper">
+                                <span class="nav-tabs-title">Quando você deseja consultar?</span>
+                                <ul class="nav nav-tabs" data-tabs="tabs">
+                                    <li class="active">
+
+                                    </li>
+                                    <li class="">
+
+                                    </li>
+                                    <li class="">
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-content">
+                        <div class="tab-content">
+                            <div class="tab-pane active">
+
+
+                                <div class="containeer col-lg-6">
+                                    <form action="/Consulta/Create" method="post">
+                                        @Html.AntiForgeryToken()
+                                        <input type="hidden" value="@ViewBag.MedConsul" name="ID_MediConsu" id="ID_MediConsu" />
+
+                                        <div class="row">
+                                            <md-input-container flex-gt-md="30">
+
+                                                <input time="false" date="true" mdc-datetime-picker="" type="text" id="Data_Cons" name="Data_Cons"
+                                                       date="DD/MM/YYYY" format="DD/MM/YYYY" ng-change="testeData()"
+                                                       placeholder="Data" ng-model="date" min-date="minDate" max-date="maxDate" class=" md-input">
+
+
+                                            </md-input-container>
+                                            <md-input-container flex-gt-md="30">
+                                                <input mdc-datetime-picker="" date="false" time="true" type="text" id="Hora_Cons" name="Hora_Cons"
+                                                       placeholder="Hora" min-date="minDate" format="HH:mm" ng-model="time" class=" md-input">
+                                            </md-input-container>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-offset-2 col-md-10">
+                                                <button type="submit" class="btn btn-primary pull-right"> Cadastrar </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <div class="col-lg-6" style="height:100%!important">
+                                    <div class="row">
+                                        <div class="col-md-8 col-md-offset-2">
+
+                                            <div id="conteuHorar">
+
+                                                <div style="width:100%;display: inline-block;">
+                                                    <h3 style="text-align:center">@Dia - @Mes - @Ano</h3>
+                                                </div>
+                                                <div>
+                                                    <h5 style="text-align:center">Horários Indisponíveis:</h5>
+                                                </div>
+
+                                                @foreach (var item in Model)
+                                                {
+
+                                                    if (item != null && item.Consulta != null)
+                                                    {
+                                                        <div class="col-md-3">
+                                                            <button class="btn btn-primary" btn-block data-background-color="red">@item.Consulta.Data_Consa.ToString("HH:mm")</button>
+                                                        </div>
+                                                    }
+                                                }
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,105 @@
+﻿@model IEnumerable<AplicacaoMedicina.Models.Laboratorio>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Tipo.Nome_Tipo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome_Labo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CNPJ_Labo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CEP_Labo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Endereco_Labo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Numero_Labo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Complemento_Labo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bairro_Labo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cidade_Labo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado_Labo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Responsavel_Labo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefone_Labo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email_Labo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tipo.Nome_Tipo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome_Labo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CNPJ_Labo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CEP_Labo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Endereco_Labo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Numero_Labo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Complemento_Labo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Bairro_Labo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cidade_Labo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estado_Labo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Responsavel_Labo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefone_Labo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email_Labo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_Labo }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_Labo }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_Labo })
+        </td>
+    </tr>
+}
+
+</table>

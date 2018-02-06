@@ -1,0 +1,57 @@
+﻿@model AplicacaoMedicina.Models.Agenda
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutMedico.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Agenda</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MedicoConsultorio.ID_MediConsu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MedicoConsultorio.ID_MediConsu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Data_Agenda)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data_Agenda)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DSeman_Agenda)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DSeman_Agenda)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ativo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ativo)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,160 @@
+﻿@model AplicacaoMedicina.Models.Paciente
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Paciente</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome_Paci)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome_Paci)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NomeSocial_Paci)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomeSocial_Paci)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DtNasc_Paci)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DtNasc_Paci)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sexo_Paci)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sexo_Paci)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CPF_Paci)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CPF_Paci)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RG_Paci)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RG_Paci)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Orgao_Paci)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Orgao_Paci)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email_Paci)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email_Paci)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CEP_Paci)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CEP_Paci)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Endereco_Paci)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco_Paci)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Numero_Paci)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Numero_Paci)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Complemento_Paci)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Complemento_Paci)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bairro_Paci)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bairro_Paci)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cidade_Paci)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cidade_Paci)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado_Paci)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado_Paci)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mae_Paci)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mae_Paci)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pai_Paci)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pai_Paci)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

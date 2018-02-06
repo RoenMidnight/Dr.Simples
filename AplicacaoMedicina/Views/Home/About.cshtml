@@ -1,0 +1,451 @@
+﻿@{
+    Layout = "";
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Doutor Simples - Saúde ao seu alcance! </title>
+    <meta name="description" content="Doutor Simples é um sistema de agendamento online para agilizar as interações entre médicos e pacientes." />
+    <meta name="keywords" content="doutor,simples,agendamento,consulta,consultorio,médico" />
+    <meta name="author" content="Overload Technology" />
+
+    <!-- Favicons (created with http://realfavicongenerator.net/)-->
+    <link rel="apple-touch-icon" sizes="57x57" href="~/Content/img/favicons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="~/Content/img/favicons/apple-touch-icon-60x60.png">
+    <link rel="icon" type="image/png" href="~/Content/img/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="~/Content/img/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="~/Content/img/favicons/manifest.json">
+    <link rel="shortcut icon" href="~/Content/img/favicons/favicon.ico">
+    <meta name="msapplication-TileColor" content="#00a8ff">
+    <meta name="msapplication-config" content="~/Content/img/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Normalize -->
+    <link rel="stylesheet" type="text/css" href="~/Content/css/normalize.css">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="~/Content/css/bootstrap.css">
+    <!-- Owl -->
+    <link rel="stylesheet" type="text/css" href="~/Content/css/owl.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" type="text/css" href="~/Content/css/animate.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" type="text/css" href="~/fonts/font-awesome-4.1.0/css/font-awesome.min.css">
+    <!-- Elegant Icons -->
+    <link rel="stylesheet" type="text/css" href="~/Content/fonts/eleganticons/et-icons.css">
+    <!-- Main style -->
+    <link rel="stylesheet" type="text/css" href="~/Content/css/cardio.css">
+    <!--CUSTOM CSS-->
+    <link rel="stylesheet" type="text/css" href="~/Content/css/css_fix.css">
+
+    <!-- Hotjar Tracking Code for doutorsimples.com.br -->
+    <script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:612121,hjsv:5};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+</head>
+
+<body>
+    <div class="preloader">
+        <img src="~/Content/img/loader.gif" alt="Preloader image">
+    </div>
+    <nav class="navbar">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Mudar navegação</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#intro" style="display:inline-flex">
+                    <img src="../Content/img/logo.png" data-active-url="../Content/img/logo-active.png" alt="" style="">
+                </a>
+
+
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right main-nav">
+                    <li><a href="/Home/Index">Pacientes</a></li>
+                    <li><a href="/Home/IndexMed">Médicos</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                    <li><a href="/UsuarioConsultorios/Login" class="btn btn-blue">Entrar Médico</a></li>
+                    <li><a href="/UsuarioPaciente/Login" class="btn btn-blue">Entrar Paciente</a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <header id="intro">
+        <div class="container">
+            <div class="table">
+                <div class="header-text">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <h3 class="light white">Doutor Simples</h3>
+                            <h1 class="white typed">Agende sua consulta já</h1>
+                            <span id="cadastro" class="typed-cursor">!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section id="termos" class="section section-padded">
+        <div class="termos">
+            <h2>
+                Termos de uso
+            </h2>
+            <h4 style="">
+                A sua privacidade é muito importante para o Doutor Simples. Por isso, criamos uma Política de Privacidade que abrange a forma como coletamos, usamos, divulgamos, transferimos e armazenamos suas informações.
+                É importante que você leia. Se tiver dúvida, entre em contato conosco.
+            </h4>
+
+        </div>
+
+        <div class="termos">
+            <h2>
+                Captação e uso de dados pessoais
+            </h2>
+            <h4 style="">
+                Os dados pessoais podem ser usados para identificar ou contatar o paciente. Eles podem ser solicitados a qualquer momento em contato com o Doutor Simples, seja por meio do site, aplicativo, telefone ou no centro médico.
+                O Doutor Simples somente utilizará essas informações pessoais de maneira consistente com o indicado nesta Política de Privacidade.
+                As informações coletadas também podem ser analisadas e associadas a outras informações a que o Doutor Simples tiver acesso, garantindo a melhoraria de nossos produtos, serviços, conteúdo e propaganda, sempre respeitando a presente Política de Privacidade.
+                Não é obrigatório que você forneça as informações pessoais que pedimos, porém sem esses dados, em muitos casos, não conseguiremos oferecer a você nossos produtos e serviços ou responder as suas dúvidas.
+                Aqui estão alguns exemplos dos tipos de dados pessoais que o Doutor Simples pode pedir e como podemos usá-las.
+
+            </h4>
+
+        </div>
+
+        <div class="termos">
+            <h2>
+                Dados pessoais solicitados
+            </h2>
+            <h4 style="">
+                Quando você cria uma conta de acesso no site ou aplicativo do Doutor Simples ou, ainda, agenda uma consulta por telefone e centro médico, podemos coletar informações suas, as quais incluem, mas não se limitam, ao seu nome, endereço, CPF (ou outro número de documento), telefone e e-mail.
+            </h4>
+
+        </div>
+
+        <div class="termos">
+            <h2>
+                Como usamos seus dados pessoais
+            </h2>
+            <h4 style="">
+                As informações pessoais que coletamos nos permite manter você atualizado sobre os mais recentes anúncios de produtos, atualizações de serviço e de eventos do Doutor Simples. Se não quiser participar de nossa lista, poderá optar por não receber nossa comunicação a qualquer momento, seja no cadastro ou atualizando suas preferências.
+                As informações pessoais também são utilizadas para criar, desenvolver, operar, fornecer e melhorar nossos produtos, serviços, conteúdo e publicidade, além de prevenir perdas e evitar fraudes.
+                De tempos em tempos poderemos usar suas informações pessoais para enviar avisos importantes, como comunicações sobre os serviços e alterações em nossos termos, condições e procedimentos.
+                Podemos também usar informações pessoais para propósitos internos, como auditoria, análise de dados e pesquisas visando a melhoria dos produtos, serviços e a comunicação com os pacientes do Doutor Simples.
+
+            </h4>
+
+        </div>
+
+        <div class="termos">
+            <h2>
+                Coleta e uso de dados não pessoais
+            </h2>
+            <h4 style="">
+                Também coletamos dados que, analisados de forma independente, não permitem a associação direta a um indivíduo específico. Podemos coletar, usar, transferir e revelar informações não pessoais para qualquer propósito. Veja alguns exemplos de dados não pessoais que captamos e como podemos usá-las.
+                Podemos coletar informações como ocupação, idioma, código postal, código de área, identificador único de dispositivo, localização e fuso horário em que um produto Doutor Simples é usado para que possamos entender melhor o comportamento do paciente e melhorar nossos produtos, serviços e propaganda.
+                Também coletamos informações sobre atividades do cliente e usuários em nossos sites, produtos e serviços. Essas informações são utilizadas com o propósito de nos auxiliar no fornecimento de produtos e serviços mais úteis e completos aos nossos clientes e compreender quais de suas partes geram maior interesse.
+                Se nós juntarmos as informações não pessoais com informações pessoais, as informações combinadas serão tratadas como informações pessoais enquanto permanecerem combinadas.
+
+            </h4>
+
+        </div>
+
+
+        <div class="termos">
+            <h2>
+                Outros usos dos dados coletados
+            </h2>
+            <h4 style="">
+                Independentemente de se tratar de informações pessoais ou não pessoais, o Doutor Simples poderá utilizar os dados e informações coletados para as seguintes finalidades:
+                <br>
+                •	Responder a eventuais dúvidas e solicitações do paciente;<br>
+                •	Cumprimento de ordem legal ou judicial;<br>
+                •	Constituir, defender ou exercer regularmente direitos em âmbito judicial ou administrativo;<br>
+                •	Garantir a segurança dos pacientes;<br>
+                •	Manter atualizados os cadastros dos pacientes para contato por telefone fixo, celular, e-mail, SMS, mala direta, redes sociais ou por outros meios de comunicação;<br>
+                •	Promover o serviço e seus parceiros, comerciais ou não, e informar sobre novas oportunidades e benefícios para o paciente<br>
+                •	Gerar análises e estudos, sejam estatísticos ou identificáveis, com base no comportamento de uso das ferramentas, site, produtos e serviços do Doutor Simples<br>
+                •	Promover o serviço e seus parceiros, comerciais ou não, e informar sobre novas oportunidades e benefícios para o paciente;<br>
+                •	Gerar análises e estudos, sejam estatísticos ou identificáveis, com base no comportamento de uso das ferramentas, site, produtos e serviços do Doutor Simples;<br>
+                •	Aperfeiçoar o uso e a experiência interativa durante a navegação do paciente no site, produtos e serviços do Doutor Simples bem como das demais ferramentas e plataformas lançadas pelo Doutor Simples; e os dados adquiridos somente poderão ser acessados por profissionais devidamente autorizados pelo Doutor Simples, respeitando a necessidade a que serão submetidos, a relevância para os objetivos do Doutor Simples e os interesses dos usuários, além de preservar sua privacidade.
+
+            </h4>
+
+        </div>
+
+        <div class="termos">
+            <h2>
+                Cookies e outras tecnologias
+            </h2>
+            <h4 style="">
+                O site, os serviços on-line, os aplicativos interativos, as mensagens de e-mail e as propagandas do Doutor Simples podem usar “cookies” e outras tecnologias, como pixel tags e web beacons.
+                Essas tecnologias nos ajudam a entender melhor o comportamento do paciente, nos informando que partes de nosso site as pessoas visitaram, além de ajudar e medir a eficácia das propagandas e pesquisas na web. As informações coletadas por cookies e outras tecnologias são tratadas como informações não pessoais, todavia, à medida que os endereços do Protocolo da Internet (IP, Internet Protocol) ou identificadores similares sejam considerados informações pessoais pela lei local, também trataremos esses identificadores como informações pessoais. Similarmente, à medida que as informações não pessoais sejam combinadas com informações pessoais, as informações combinadas são tratadas como informações pessoais para os propósitos desta Política de Privacidade.
+                O Doutor Simples e seus parceiros usam cookies e outras tecnologias de serviços de publicidade móvel para controlar o número de exibições de determinado anúncio, mostrar anúncios de acordo com os interesses do paciente e avaliar o desempenho das campanhas de publicidade.
+                Quando você usa um dispositivo móvel para acessar os Serviços, é possível limitar as informações que podem ser recolhidas pelo Doutor Simples e por terceiros. Os sistemas operacionais dos dispositivos móveis são diferentes, por isso, confira o menu “Configuração” de dispositivo móvel para saber como alterar suas preferências relacionadas a “Limitar Publicidade Rastreada”. Se optar por ativar essa função você continuará a receber o mesmo número de anúncios móveis, mas eles poderão ser menos relevantes, uma vez que não serão baseados nos seus interesses.
+                Informamos que a desativação por meio do link fornecido aplica-se apenas aos serviços de publicidade do Doutor Simples e não influencia anúncios de outras redes de publicidade, portanto você ainda pode ver anúncios personalizados e direcionados em páginas da web ou aplicativos. No entanto, se a opção “Limitar Publicidade Rastreada” estiver ativa em seu dispositivo móvel, não apenas o Doutor Simples como também terceiros não poderão usar o “Identificador de Publicidade”, que possui a função de auxiliar na apresentação de anúncios direcionados, resultando na apresentação apenas de anúncios não direcionados.
+                O Doutor Simples e seus parceiros também utilizam cookies e outras tecnologias para coletar e armazenar informações pessoais quando nossos produtos, serviços, aplicativos e site são utilizados. Nossa meta nesses casos é tornar sua experiência com o Doutor Simples mais conveniente e pessoal. Por exemplo, saber seu nome nos permite dar as boas-vindas a você na próxima vez que visitar o site do Doutor Simples. Saber seu país e idioma, se você for um cliente, usuário, pessoa interessada em assuntos de saúde ou profissional da área de saúde isso pode nos ajudar a fornecer uma experiência personalizada e mais útil. Saber se alguém que está usando seu computador ou dispositivo comprou um determinado produto ou usou um serviço em particular nos ajuda a tornar nossas comunicações de propaganda e por e-mail mais relevantes para seus interesses.
+                Saber suas informações de contato e sobre seu computador ou dispositivo nos ajuda a personalizar e otimizar nossos produtos, serviços e site ao seu sistema operacional e navegador, além de nos auxiliar no fornecimento de um atendimento ao cliente melhor e mais personalizado.
+                Quando você usa um navegador da Web para acessar os Serviços, pode configurá-lo para aceitar todos os cookies, rejeitar todos os cookies ou notificar você quando um cookie for recebido. Os navegadores são diferentes, por isso, confira o menu “Ajuda” de seu navegador para saber como alterar suas preferências relacionadas a cookies. O sistema operacional de seu dispositivo pode conter controles adicionais relacionados a cookies.
+                No entanto, alguns Serviços podem ser projetados para funcionar usando cookies e, portanto, a desativação dos cookies pode afetar sua capacidade de usar esses Serviços ou algumas das partes deles.
+                Assim como ocorre na maioria dos sites, algumas informações são coletadas automaticamente e armazenadas em arquivos de log. Essas informações incluem, dentre outras, endereços do Protocolo da Internet (IP), tipo de navegador, idioma, provedor de serviços da Internet (ISP), páginas de encaminhamento e saída, sistema operacional, marcação de data/hora, ações efetuadas pelo usuário, ferramentas e funcionalidades acessadas pelo usuário e dados clickstream.
+                Usamos essas informações para entender e analisar tendências, administrar o site, aprender sobre o comportamento e coletar informações demográficas sobre nossa base de pacientes como um todo. O Doutor Simples pode usar essas informações em seus serviços de marketing e propagandas.
+                Em algumas das mensagens de e-mail, usamos um “URL click-through” vinculado ao conteúdo no site do Doutor Simples.
+                Quando os usuários clicam em um desses URLs, eles podem passar por um servidor web em separado antes de chegar à página de destino em nosso site. Rastreamos esses dados "click-through" para nos ajudar a determinar o interesse em tópicos em particular e medir a eficácia de nossas comunicações com o usuário. Se preferir não ser rastreado dessa maneira, você não deverá clicar no texto ou link gráfico nas mensagens de e-mail.
+                Pixel tags nos permitem enviar mensagens de e-mail em um formato que os usuários podem ler diretamente, sem a necessidade de um servidor externo, o que permite que recebamos informações relacionadas à abertura do e-mail e tempo de leitura. Podemos utilizar essas informações para reduzir ou eliminar mensagens e e-mails enviados aos pacientes.
+
+            </h4>
+
+        </div>
+
+
+        <div class="termos">
+            <h2>
+                Divulgação a terceiros
+            </h2>
+            <h4 style="">
+                A base de dados de informações formada pelo Doutor Simples pode ser disponibilizada a parceiros de negócio estratégicos visando o benefício e geração de resultados mútuos, como o fornecimento ou melhora de nossos produtos, serviços e propaganda. A base de dados não será compartilhada para propósitos de marketing dos parceiros de negócios.
+            </h4>
+
+        </div>
+
+
+
+        <div class="termos">
+            <h2>
+                Outros
+            </h2>
+            <h4 style="">
+                Pode ser necessário − por lei, processo legal, litígio e/ou solicitações de autoridades públicas e governamentais dentro ou fora de seu país de residência − que o Doutor Simples revele suas informações pessoais. Podemos também revelar informações sobre você se determinarmos que, para propósitos de segurança nacional, imposição da lei ou outros problemas de importância pública, a revelação será necessária ou apropriada.
+                Também podemos revelar informações sobre você se determinarmos que a revelação é razoavelmente necessária para impor nossos termos e condições ou proteger nossas operações ou usuários. Além disso, no caso de uma reorganização, fusão ou venda, podemos transferir qualquer e todas as informações pessoais que coletamos a terceiros relevantes.
+
+            </h4>
+
+        </div>
+
+
+        <div class="termos">
+            <h2>
+                Proteção de dados pessoais
+            </h2>
+            <h4 style="">
+                O Doutor Simples leva a segurança de seus dados pessoais muito a sério. Os serviços on-line do Doutor Simples protegem suas informações pessoais durante a transmissão usando criptografia. Quando seus dados pessoais são armazenados pelo Doutor Simples, utilizamos sistemas de computador cujo acesso é limitado, uma vez que são mantidos em instalações que incluem medidas físicas de segurança. Os dados são armazenados de maneira criptografada, mesmo quando utilizados serviços de armazenamento de terceiros.
+                Considerando que nenhum sistema de segurança é absolutamente seguro, o Doutor Simples se exime de quaisquer responsabilidades por eventuais danos e/ou prejuízos decorrentes de falhas, vírus ou invasões do banco de dados de seus produtos, serviços e site, salvo nos casos em que tiver agido com dolo ou culpa.
+                Quando algum fórum de mensagem ou serviços de rede social do Doutor Simples é usado, as informações pessoais que você compartilha são visíveis a outros usuários e podem ser lidas, coletadas ou usadas por eles. Você é responsável pelas informações pessoais que escolhe enviar nesses casos. Por exemplo, se você comenta uma postagem de Facebook, essas informações serão públicas.
+
+            </h4>
+
+        </div>
+
+
+        <div class="termos">
+            <h2>
+                Integridade e retenção de dados pessoais
+            </h2>
+            <h4 style="">
+                O Doutor Simples permite que você mantenha facilmente suas informações pessoais precisas, completas e atualizadas. Reteremos suas informações pessoais pelo período necessário para satisfazer as finalidades descritas nesta Política de Privacidade, a menos que um período de retenção mais longo seja exigido ou permitido por lei.
+            </h4>
+
+        </div>
+
+        <div class="termos">
+            <h2>
+                Acesso a informações pessoais
+            </h2>
+            <h4 style="">
+                Você pode ajudar a assegurar que suas informações e preferências de contato estejam corretas, completas e atualizadas.
+                No caso de outras informações pessoais que armazenamos, ofereceremos o acesso a você para qualquer finalidade, incluindo solicitar a atualização, correção e exclusão dos dados, contanto que o Doutor Simples não seja obrigado por lei ou para fins comerciais legítimos a retê-los. Podemos recusar o processamento de solicitações que sejam infundadas/vexatórias, prejudiquem a privacidade de outros, sejam extremamente impraticáveis ou cujo acesso não seja de outra forma exigido por lei. Seus dados poderão ser visualizados no Portal do Paciente, usando seu login e senha, acessando por site ou aplicativo.
+
+            </h4>
+
+        </div>
+
+
+
+        <div class="termos">
+            <h2>
+                Serviços de localização
+            </h2>
+            <h4 style="">
+                Para fornecer serviços de localização em seus produtos e serviços, o Doutor Simples, seus parceiros e licenciados podem coletar, usar e compartilhar dados de localização precisos, incluindo a localização geográfica em tempo real de seu computador ou dispositivo do Doutor Simples. Esses dados de localização são coletados anonimamente de forma a não identificar você pessoalmente e são usados pelo Doutor Simples, seus parceiros e licenciados para fornecer e melhorar produtos e serviços de localização. Por exemplo, podemos compartilhar sua localização geográfica com provedores de aplicativos quando você optar por usar serviços de localização.
+            </h4>
+
+        </div>
+
+
+
+
+
+        <div class="termos">
+            <h2>
+                Sites e serviços de terceiros
+            </h2>
+            <h4 style="">
+                Sites, produtos, aplicativos e serviços do Doutor Simples podem conter links para sites, produtos e serviços de terceiros. Nossos produtos e serviços podem usar ou oferecer produtos ou serviços de terceiros, por exemplo, um aplicativo de terceiros para iOS, Android e/ou Windows Phone. Informações coletadas por terceiros, que podem incluir dados de localização ou informações para contato, são regidas pelas práticas de privacidade desses terceiros, as quais incentivamos você a conhecer.
+            </h4>
+
+        </div>
+
+        <div class="termos">
+            <h2>
+                Nosso compromisso em toda a empresa quanto à sua privacidade
+            </h2>
+            <h4 style="">
+                Para buscar a garantia de que suas informações pessoais estão seguras, comunicamos nossas diretrizes de privacidade e segurança aos colaboradores do Doutor Simples e impomos estritamente as salvaguardas de privacidade na empresa.
+            </h4>
+
+        </div>
+
+
+        <div class="termos">
+            <h2>
+                Perguntas de privacidade
+            </h2>
+            <h4 style="">
+                Se tiver qualquer dúvida sobre a Política de Privacidade do Doutor Simples ou sobre o processamento de dados, ou, ainda, se quiser fazer uma reclamação devido a uma possível violação das leis locais de privacidade, entre em contato conosco.
+                Qualquer comunicação dessa natureza será examinada e as respostas, quando adequadas, serão enviadas o quanto antes.
+                O Doutor Simples pode atualizar sua Política de Privacidade de tempos em tempos. Quando alterarmos a política de modo material, será postado um aviso em nosso site juntamente com a Política de Privacidade atualizada.
+
+            </h4>
+
+        </div>
+    </section>
+    <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content modal-popup">
+                <a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
+                <h3 class="white">Cadastrar</h3>
+                <form action="" class="popup-form">
+                    <input id="Nome" type="text" class="form-control form-white" placeholder="Nome Completo">
+                    <input id="Email" type="text" class="form-control form-white" placeholder="E-mail">
+                    <input id="Telefone" type="text" class="form-control form-white" placeholder="Telefone">
+                    <div class="dropdown">
+                        <button id="dLabel" class="form-control form-white dropdown" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Plano de cobrança
+                        </button>
+                        <ul class="dropdown-menu animated fadeIn" role="menu" aria-labelledby="dLabel">
+                            <li class="animated lightSpeedIn"><a href="#">Pacote Mensal</a></li>
+                            <li class="animated lightSpeedIn"><a href="#">Pacote Associado</a></li>
+                            <li class="animated lightSpeedIn"><a href="#">Teste</a></li>
+                        </ul>
+                    </div>
+                    <div class="checkbox-holder text-left">
+                        <div class="checkbox">
+                            <input type="checkbox" value="None" id="squaredOne" name="check" />                            
+                        </div>
+                    </div>
+                    <button id="Enviar" type="submit" class="btn btn-submit">Enviar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <footer id="contato">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 text-center-mobile">
+                    <h3 class="white">Use gratuitamente</h3>
+                    <h5 class="light regular light-white">Não deixe sua saúde em segundo lugar!</h5>
+                    <a href="#" class="btn btn-blue ripple trial-button">Começar a usar</a>
+                </div>
+                <div class="col-sm-6 text-center-mobile">
+                    <h3 class="white">Horário de suporte <span class="open-blink"></span></h3>
+                    <div class="row opening-hours">
+                        <div class="col-sm-6 text-center-mobile">
+                            <h5 class="light-white light">Seg - Sex</h5>
+                            <h3 class="regular white">9:00 - 22:00</h3>
+                        </div>
+                        <div class="col-sm-6 text-center-mobile">
+                            <h5 class="light-white light">Sab</h5>
+                            <h3 class="regular white">10:00 - 18:00</h3>
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-blue ripple trial-button" data-toggle="modal" data-target="#modal1">Abrir chamado de suporte</a>
+                </div>
+            </div>
+            <div class="row bottom-footer text-center-mobile">
+                <div class="col-sm-8">
+                    <p>&copy; 2017 All Rights Reserved. Overload Technology</p>
+                </div>
+                <div class="col-sm-4 text-right text-center-mobile">
+                    <!--ul class="social-footer">
+                    <li><a href="http://www.facebook.com/pages/Codrops/159107397912"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="http://www.twitter.com/codrops"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="https://plus.google.com/101095823814290637419"><i class="fa fa-google-plus"></i></a></li>
+                    </ul-->
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Holder for mobile navigation -->
+    <div class="mobile-nav">
+        <ul></ul>
+        <a href="#" class="close-link"><i class="arrow_up"></i></a>
+    </div>
+    <!-- Scripts -->
+    <script src="../../Scripts/js/jquery-1.11.1.min.js"></script>
+    <script src="../../Scripts/js/owl.carousel.min.js"></script>
+    <script src="../../Scripts/js/bootstrap.min.js"></script>
+    <script src="../../Scripts/js/wow.min.js"></script>
+    <script src="../../Scripts/js/typewriter.js"></script>
+    <script src="../../Scripts/js/jquery.onepagenav.js"></script>
+    <script src="../../Scripts/js/main.js"></script>
+
+    <script>
+        var Data = new Date();
+        var Hora = Data.getHours();
+        var DiaS = Data.getDay();
+
+        if (DiaS == 0 || DiaS == 6) {
+            if (Hora < 10 || Hora > 17) {
+                $('.open-blink').append('<style>.open-blink{background-color:#a94442 !important} .open-blink:before{background-color:#a94442 !important}</style>');
+            }
+        } else {
+            if (Hora < 9 || Hora > 21) {
+                $('.open-blink').append('<style>.open-blink{background-color:#a94442 !important} .open-blink:before{background-color:#a94442 !important}</style>');
+            }
+        }
+
+    </script>
+
+    <script>
+        $("#Enviar").on('click', function () {
+            event.preventDefault();
+
+            $.ajax({
+                url: '/Home/EnviaPedido',
+                type: 'Post',
+                data: { Nome: $('#Nome').val(), Email: $('#Email').val(), Telefone: $('#Telefone').val(), Subject: $('#dLabel').html() },
+                success: function (dados) {
+
+                    if (dados.success) {
+                        $('#modal1').modal('toggle');
+                    }
+
+
+                }, error: function (x, y, err) {
+                    // alert("Operação não efetuada");
+                }
+            });
+        });
+    </script>
+
+    
+</body>
+
+</html>

@@ -1,0 +1,131 @@
+﻿@model AplicacaoMedicina.Models.Medico
+
+
+<div class="modal-header">
+    <h4>Editar Médico</h4>
+</div>
+
+<div class="modal-body">
+
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "cadastrar"}))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group label-floating">
+                        <label class="control-label">Nome</label>
+                        @Html.EditorFor(model => model.Nome_Medi, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Nome_Medi, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group label-floating">
+                        <label class="control-label">CRM</label>
+                        @Html.EditorFor(model => model.CRM_Medi, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CRM_Medi, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group label-floating">
+                        <label class="control-label">CPF</label>
+                        @Html.EditorFor(model => model.CPF_Medi, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CPF_Medi, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group label-floating">
+                        <label class="control-label">E-Mail</label>
+                        @Html.EditorFor(model => model.Email_Medi, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Email_Medi, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group label-floating">
+                        <label class="control-label">Telefone</label>
+                        @Html.EditorFor(model => model.Telefone_Medi, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Telefone_Medi, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group label-floating">
+                        <label class="control-label">Tipo Inscrição</label>
+                        @Html.EditorFor(model => model.TipoInscri_Medi, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.TipoInscri_Medi, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group label-floating">
+                        <label class="control-label">Área</label>
+                        @Html.DropDownList("ID_Area", null, new { @class = "form-control" })                   
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" id="submit" class="btn btn-primary pull-right"> Cadastrar </button>
+                </div>
+            </div>
+            
+        </div>
+    }
+</div>
+
+<script>
+    $("#submit").on("click", function (event) {
+        event.preventDefault();
+
+        var form = document.getElementById("cadastrar");
+        var data = $(form).serialize();
+
+        //Pega a Action do Form.
+        var modulo = $("#cadastrar").attr("action");
+
+        $.ajax({
+            url: modulo,
+            type: 'POST',
+            data: data,
+            success: function (response) {
+                if (response && response.success) {
+                    location.reload();
+                } else {                    
+
+                    console.log(response);
+                    console.log(response.error.length);
+
+                    for (var i = 0; i <= response.error.length; ++i) {
+                        console.log(response.error[i]);
+                        $('#' + response.error[i]).css("background-image", "-webkit-linear-gradient(#f44336 0%,#f44336 100%), linear-gradient(#f44336 0%,#f44336 100%)");
+                    }
+                                                            
+                }
+
+            }, error: function (x, y, err) {
+                alert("Operação não efetuada!");
+            }
+        });
+
+    });
+</script>
+

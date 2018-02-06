@@ -1,0 +1,314 @@
+﻿@model AplicacaoMedicina.Models.UsuarioPaciente
+
+@{
+    Layout = "";
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png" />
+    <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>Doutor Simples - Login</title>
+
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="apple-touch-icon" sizes="57x57" href="../Content/img/favicons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="../Content/img/favicons/apple-touch-icon-60x60.png">
+    <link rel="icon" type="image/png" href="../Content/img/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="../Content/img/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="../Content/img/favicons/manifest.json">
+    <link rel="shortcut icon" href="../Content/img/favicons/favicon.ico">
+    <meta name="msapplication-TileColor" content="#00a8ff">
+    <meta name="msapplication-config" content="../Content/img/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="../Content/styles.css" />
+
+    @Styles.Render("~/Content/doctorStyles/css")
+
+    <!-- Hotjar Tracking Code for doutorsimples.com.br -->
+    <script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:612121,hjsv:5};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+
+    <!--     Fonts and icons     -->
+    <link href="../../Content/font-awesome.min.css" rel="stylesheet">
+    <link href="../../Content/font-Roboto.css" rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+
+    <div id="loading">
+        <div id="spinner"></div>
+    </div>
+
+    <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="inbox-body">
+                    <div class="modal-header">
+                        <h4>E-Mail Inválido</h4>
+                    </div>
+
+                    <div class="modal-body"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="wrapper">
+
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+
+
+
+                    <div class="card-avatar">
+                        <center>
+                            <a href="">
+                                <img class="img" src="../../Content/images/user_icon_fill.png" />
+                            </a>
+                        </center>
+
+                    </div>
+
+                    <div class="content">
+
+                        <style>
+
+                            .control-label{
+                                left: 46.5%;
+                            }
+
+                            #avatar {
+                                        background-color: black;
+                                        width: 250px;
+                                        display: inline-block;
+                                        border-radius: 50%;
+                                        height: 250px;
+                                    }
+
+                             img {
+                                        vertical-align: middle;
+                                        width: 200px;
+                                        background-color: #EEEEEE;
+                                        margin-top: 8px;
+                                        border-radius: 50%;
+                                        border-color: black;
+                                        border-style: solid;
+                                    }
+
+                                   .wrapper{
+                                    width: 50%;
+                                    display: initial;
+                                   }
+                                    @Html.Raw("@media") screen and (max-width:800px){
+                                    img{
+                                     width: 150px!important;
+                                     margin-top: 0px!important;
+                                    }
+                                    #avatar{
+                                     width: 150px!important;
+                                     height: 150px!important;
+                                    }
+                                   }
+                                    @Html.Raw("@media") screen and (min-width:800px){
+                                    .content{
+
+                                    }
+                                    .container-fluid{
+                                     width: 50%;
+                                    }
+                                   }
+                                   .container-fluid{
+                                    border-style: groove;
+                                    padding: 50px;
+                                    box-shadow: 23px 24px 73px 1px;
+                                   }
+                                ul {
+                                    margin: 0!important;
+                                    margin-bottom: 10px;
+                                    padding: 0!important;
+                                    list-style-type: none;
+                                }
+
+                        </style>
+                        <center>
+                            <h6 class="category text-gray"></h6>
+                            <h4 class="card-title">Login - Doutor Simples</h4>
+                            <p>Acesso do Usuário</p>
+
+                            @using (Html.BeginForm())
+                            {
+                                @Html.ValidationSummary(true)
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">E-mail</label>
+                                            @Html.EditorFor(model => model.Usuario_UsuPaci, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Usuario_UsuPaci)
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">Senha</label>
+                                            @Html.PasswordFor(model => model.Senha_UsuPaci, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.Senha_UsuPaci)
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary pull-center">Login</button>
+                                <br />
+
+
+                            }
+                            <hr />
+
+                            <div class="row">
+                                <h3>ou</h3>
+                                <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false"
+                                     data-use-continue-as="false" data-scope="basic_info" onlogin="checkLoginState();">
+
+                                </div>
+                            </div>
+
+                            <hr />
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <a href="../Paciente/Create"> <h4>Crie sua Conta</h4>  </a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <a href="../UsuarioPaciente/RedefinirSenha"> <h4>Esqueceu a sua Senha?</h4>  </a>
+                                </div>
+                            </div>
+                        </center>
+
+                        <div class="clearfix"></div>
+                        <style>
+                            .clearfix {
+                                padding-bottom: 5px;
+                            }
+                        </style>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</body>
+
+
+
+
+
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/doctorScripts")
+
+
+
+<script>       
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '1115640525247131',
+                cookie: true,
+                xfbml: true,
+                version: 'v2.8'
+            });
+            FB.AppEvents.logPageView();
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.9&appId=1115640525247131";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        function checkLoginState() {
+            FB.getLoginStatus(function (response) {
+
+                if (response.status == "connected") {
+                    var access_token = response.authResponse.accessToken;
+
+                    $.ajax({
+                        type: "POST",
+                        url: '../UsuarioPaciente/AcaoFacebook',
+                        data: { facebookToken: access_token },
+                        success: function (response) {
+
+                            if (response.message == "login") {
+                                window.location = "../../Paciente/Dashboard";
+                            }
+
+                            if (response.message == "create") {
+                                window.location = "../../Paciente/Edit";
+                            }
+
+                            if (response.message == "Email") {
+                                $('#myModal').modal({
+                                    keyboard: true
+                                }, 'show');
+                            } 
+
+                           // console.log(response.resArray);
+                        }
+                    });
+                }
+            });
+        }
+
+        $(document).ajaxStart(function () {
+            $("#loading").attr("style", "visibility: visible");
+        }).ajaxStop(function () {
+            $("#loading").attr("style", "visibility: hidden");
+        });
+
+        checkLoginState();
+
+</script>
+
+<script type="text/javascript">
+    	$(document).ready(function(){
+
+			// Javascript method's body can be found in assets/js/demos.js
+        	demo.initDashboardPageCharts();
+
+    	});
+</script>
+
+</html>
+
+
+
+
+
+
+
+

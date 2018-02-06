@@ -1,0 +1,50 @@
+﻿@model AplicacaoMedicina.Models.UsuarioConsultorio
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>UsuarioConsultorio</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Consultorio.Nome_Consu)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Consultorio.Nome_Consu)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Usuario_UsuCons)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Usuario_UsuCons)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Senha_UsuCons)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Senha_UsuCons)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id_UsuCons }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

@@ -1,0 +1,189 @@
+﻿@model AplicacaoMedicina.Models.Paciente
+
+@{
+    ViewBag.Title = "GetPacienteInfo";
+    var idConsulta = ViewBag.Consulta;
+}
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" id="closeModal">&times;</button>
+    <h4>Detalhes Paciente</h4>
+</div>
+
+<div class="modal-body">
+    <dl class="dl-horizontal">
+
+        <dt>
+            Nome Paciente:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nome_Paci)
+        </dd>
+
+        <dt>
+            Nome Social:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NomeSocial_Paci)
+        </dd>
+
+        <dt>
+            Data:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DtNasc_Paci)
+        </dd>     
+
+        <dt>
+            Sexo:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Sexo_Paci)
+        </dd>
+
+        <dt>
+            CPF:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CPF_Paci)
+        </dd>
+
+        <dt>
+            RG:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RG_Paci)
+        </dd>     
+
+        <dt>
+            Orgão:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Orgao_Paci)
+        </dd>
+
+        <dt>
+            E-Mail:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email_Paci)
+        </dd>
+
+        <dt>
+            CEP:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CEP_Paci)
+        </dd>     
+
+        <dt>
+            Endereço:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Endereco_Paci)
+        </dd>
+
+        <dt>
+            Complemento:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Complemento_Paci)
+        </dd>    
+
+        <dt>
+            Numero:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Numero_Paci)
+        </dd>
+        <dt>
+            Bairro:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Bairro_Paci)
+        </dd>
+
+        <dt>
+            Cidade:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cidade_Paci)
+        </dd>
+
+        <dt>
+            Estado:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Estado_Paci)
+        </dd>
+
+        <dt>
+            Mãe:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Mae_Paci)
+        </dd>
+
+        <dt>
+            Pai:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Pai_Paci)
+        </dd>
+
+        <dt>
+            Telefone:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Telefone_Paci)
+        </dd>         
+
+        @if (idConsulta != 0) {
+        <dd>
+            @using (Html.BeginForm("ConfirmaConsulta", "Consulta", FormMethod.Post, new { id = "confirma" }))
+            {
+                @Html.AntiForgeryToken()
+                <input type="hidden" value="@idConsulta" name="id" id="id" />
+                <input type="hidden" value="@idConsulta" name="paciente" id="paciente" />
+                <input type="button" value="Confirma" />
+            }
+        </dd>
+        }
+
+    </dl>
+</div>
+<script>
+
+    $(document).ready(function () {
+
+        $("#confirma input[type=button]").on("click", function (event) {
+            event.preventDefault();
+
+            var form = document.getElementById("confirma");
+            var data = $(form).serialize();
+            var modulo = $("#confirma").attr("action");
+
+
+            $.ajax({
+                url: modulo,
+                type: 'POST',
+                data: data,
+                success: function (response) {
+                    if (response && response.success) {
+                        alert("Paciente Confirmado");
+                        $('p#' + $('#paciente').val()).remove();
+                        $('li#' + $('#paciente').val()).remove();
+
+                    } else {
+                        alert("Error");
+                    }
+                }, error: function (x, y, err) {
+                    alert("Operação não efetuada");
+                }
+            });
+
+            $('#closeModal').click();
+
+        });
+    });
+</script>

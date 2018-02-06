@@ -1,0 +1,114 @@
+﻿@model AplicacaoMedicina.Models.Consultorio
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Consultorio</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome_Consu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome_Consu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CNPJ_Consu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CNPJ_Consu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CEP_Consu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CEP_Consu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Endereco_Consu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco_Consu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Numero_Consu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Numero_Consu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Complemento_Consu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Complemento_Consu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bairro_Consu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bairro_Consu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cidade_Consu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cidade_Consu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado_Consu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado_Consu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Responsavel_Consu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Responsavel_Consu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefone_Consu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefone_Consu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email_Consu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email_Consu)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_Consu }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

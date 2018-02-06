@@ -1,0 +1,143 @@
+﻿@model IEnumerable<AplicacaoMedicina.Models.Paciente>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Paciente</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome_Paci)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NomeSocial_Paci)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DtNasc_Paci)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sexo_Paci)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CPF_Paci)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RG_Paci)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Orgao_Paci)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email_Paci)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CEP_Paci)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Endereco_Paci)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Numero_Paci)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Complemento_Paci)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bairro_Paci)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cidade_Paci)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado_Paci)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mae_Paci)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pai_Paci)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefone_Paci)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome_Paci)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeSocial_Paci)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DtNasc_Paci)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sexo_Paci)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CPF_Paci)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RG_Paci)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Orgao_Paci)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email_Paci)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CEP_Paci)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Endereco_Paci)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Numero_Paci)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Complemento_Paci)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bairro_Paci)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cidade_Paci)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado_Paci)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mae_Paci)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pai_Paci)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefone_Paci)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.ID_Paci }) |
+                @Html.ActionLink("Details", "Details", new { id=item.ID_Paci }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.ID_Paci })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

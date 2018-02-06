@@ -1,0 +1,162 @@
+﻿@model AplicacaoMedicina.Models.Consulta
+
+@{ 
+    Layout = "~/Views/Shared/_LayoutMedico.cshtml";
+}
+
+<link href="~/Content/select2.min.css" rel="stylesheet" />
+<link href="~/Content/prettify.min.css" rel="stylesheet" />
+<link href="~/Content/switchery.min.css" rel="stylesheet" />
+<link href="~/Content/starrr.css" rel="stylesheet" />
+
+<div>
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Consulta</h3>
+            </div>
+            <div class="title_right">
+                
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Prontuário <small>Dados do Paciente</small></h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a href="#">Settings 1</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Settings 2</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <br />
+                      @using (Html.BeginForm("Prontuario", "Consulta", FormMethod.Post, new { id="demo-form2", @class="form-horizontal form-label-left"}))
+                      {
+                        @Html.AntiForgeryToken()
+
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.ID_Consa)
+
+                        <div style="width:100%;display: flex;">
+                            <div style="width:50%">
+                                <div class="form-group">
+                                    
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Nome Paciente <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        @Html.EditorFor(model => model.PacienteConvenios.Paciente.Nome_Paci, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12", disabled = "disabled" } })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Nome Social <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        @Html.EditorFor(model => model.PacienteConvenios.Paciente.NomeSocial_Paci, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12", disabled = "disabled" } })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Data Nascimento</label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        @Html.TextBoxFor(model => model.PacienteConvenios.Paciente.DtNasc_Paci, new { @value = Model.PacienteConvenios.Paciente.DtNasc_Paci.ToString("dd/MM/yyyy"), @class = "form-control col-md-7 col-xs-12", disabled = "disabled" } )
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Sexo<span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        @Html.EditorFor(model => model.PacienteConvenios.Paciente.Sexo_Paci, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12", disabled = "disabled" } })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        CPF <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        @Html.EditorFor(model => model.PacienteConvenios.Paciente.CPF_Paci, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12", disabled = "disabled" } })
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="width:50%">
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                        RG <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        @Html.EditorFor(model => model.PacienteConvenios.Paciente.RG_Paci, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12", disabled = "disabled" } })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                        Orgão<span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        @Html.EditorFor(model => model.PacienteConvenios.Paciente.Orgao_Paci, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12", disabled = "disabled" } })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">E-Mail</label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        @Html.EditorFor(model => model.PacienteConvenios.Paciente.Email_Paci, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12", disabled = "disabled" } })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                       CEP<span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        @Html.EditorFor(model => model.PacienteConvenios.Paciente.CEP_Paci, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12", disabled = "disabled" } })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Endereço <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        @Html.EditorFor(model => model.PacienteConvenios.Paciente.Endereco_Paci, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12", disabled = "disabled" } })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ln_solid"></div>
+                        <h5>Notas da consulta:</h5>
+                           <!-- <div id="editor-one" class="editor-wrapper"></div> -->
+                        <div class="form-group">
+                            @Html.EditorFor(model => model.Notas_Consa, new { htmlAttributes = new { @class = "textNotas" } })
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            <div class="col-lg-6 col-sm-6 col-xs-12 col-md-offset-0">
+                                <button class="btn btn-primary btn_send" type="button" value="save">Salvar</button>
+                                <button class="btn btn-primary" type="reset" id="limpa">Limpar</button>
+                                <button class="btn btn-success btn_send" type="button" value="end">Concluir consulta!</button>
+                            </div>
+                        </div>
+                            }
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+

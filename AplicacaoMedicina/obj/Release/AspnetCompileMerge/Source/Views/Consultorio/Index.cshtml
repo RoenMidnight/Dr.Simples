@@ -1,0 +1,99 @@
+﻿@model IEnumerable<AplicacaoMedicina.Models.Consultorio>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome_Consu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CNPJ_Consu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CEP_Consu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Endereco_Consu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Numero_Consu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Complemento_Consu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bairro_Consu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cidade_Consu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado_Consu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Responsavel_Consu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefone_Consu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email_Consu)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome_Consu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CNPJ_Consu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CEP_Consu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Endereco_Consu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Numero_Consu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Complemento_Consu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Bairro_Consu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cidade_Consu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estado_Consu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Responsavel_Consu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefone_Consu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email_Consu)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_Consu }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_Consu }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_Consu })
+        </td>
+    </tr>
+}
+
+</table>

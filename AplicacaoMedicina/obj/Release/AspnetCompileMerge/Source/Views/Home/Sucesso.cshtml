@@ -1,0 +1,122 @@
+﻿@{
+    Layout = "";
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png" />
+    <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>Doutor Simples - Saúde ao seu Alcance</title>
+
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+    <link rel="stylesheet" href="../Content/styles.css" />
+    <link href="~/Content/doctorStyles/material-dashboard.css" rel="stylesheet" />
+
+
+    <link rel="stylesheet" href="~/Content/doctorStyles/demo.css" rel="stylesheet" />
+
+    @Styles.Render("~/Content/doctorStyles/css")
+
+    <!--     Fonts and icons     -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
+
+    <!-- Hotjar Tracking Code for doutorsimples.com.br -->
+    <script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:612121,hjsv:5};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+
+</head>
+
+<body>
+
+    <div id="loading">
+        <div id="spinner"></div>
+    </div>
+
+   
+    <div class="wrapper">
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+
+                    <div class="col-md-12" style="margin-top: 6%;">
+                        <div class="card card-profile">                            
+
+                            <div class="content">
+
+                                <style>
+                                    .row {
+                                        width: 90% !important;
+                                        padding-left: 10% !important;
+                                        padding-right: 0px !important;
+                                        margin: 0;
+                                    }
+
+                                    .control-label {
+                                        left: 0;
+                                    }
+
+                                    input[type=number]::-webkit-outer-spin-button,
+                                    input[type=number]::-webkit-inner-spin-button {
+                                        -webkit-appearance: none;
+                                        margin: 0;
+                                    }
+
+                                    input[type=number] {
+                                        -moz-appearance: textfield;
+                                    }
+
+                                    .error {
+                                        color: #c13434 !important;
+                                    }
+                                    .card img {
+                                        width: 20%;
+                                        height: auto;
+                                    }
+                                </style>
+                                <div class="card-content">
+                                    <div>
+                                        <img src="~/Content/images/O9IY1A1.png" />
+                                    </div>
+                                    <div >
+                                        <h3>Obrigado por se cadastrar no Doutor Simples.</h3>
+                                        <p>Dentro de momentos você deve receber um e-mail com a confirmação de sua conta.</p>
+                                        <p>Atenciosamente, equipe Doutor Simples.</p>
+                                    </div>
+                                </div>
+
+                           </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</body>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/doctorScripts")
+@Scripts.Render("~/bundles/date")
+@Scripts.Render("~/bundles/inputmask")
+
+
+</html>

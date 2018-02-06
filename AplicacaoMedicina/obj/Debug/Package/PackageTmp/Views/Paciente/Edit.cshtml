@@ -1,0 +1,293 @@
+﻿@model AplicacaoMedicina.Models.Paciente
+
+@{
+    Layout = "~/Views/Shared/_LayoutPaciente.cshtml";
+
+    List<SelectListItem> ativFisc = new List<SelectListItem>();
+    ativFisc.Add(new SelectListItem { Text = "Nenhuma", Value = "Nenhuma" });
+    ativFisc.Add(new SelectListItem { Text = "Pouca", Value = "Pouca" });
+    ativFisc.Add(new SelectListItem { Text = "Média", Value = "Media" });
+    ativFisc.Add(new SelectListItem { Text = "Muita", Value = "Muita" });
+
+    List<SelectListItem> diabetes = new List<SelectListItem>();
+    diabetes.Add(new SelectListItem { Text = "Não", Value = "Nao" });
+    diabetes.Add(new SelectListItem { Text = "Tipo 1", Value = "tipo1" });
+    diabetes.Add(new SelectListItem { Text = "Tipo 2", Value = "tipo2" });
+
+    List<SelectListItem> etilismo = new List<SelectListItem>();
+    etilismo.Add(new SelectListItem { Text = "Não", Value = "Nao" });
+    etilismo.Add(new SelectListItem { Text = "Sim", Value = "Sim" });
+
+    List<SelectListItem> fumante = new List<SelectListItem>();
+    fumante.Add(new SelectListItem { Text = "Não", Value = "Nao" });
+    fumante.Add(new SelectListItem { Text = "Sim", Value = "Sim" });
+
+    List<SelectListItem> hiperten = new List<SelectListItem>();
+    hiperten.Add(new SelectListItem { Text = "Não", Value = "Nao" });
+    hiperten.Add(new SelectListItem { Text = "Sim", Value = "Sim" });
+
+    List<SelectListItem> neoplast = new List<SelectListItem>();
+    neoplast.Add(new SelectListItem { Text = "Não", Value = "Nao" });
+    neoplast.Add(new SelectListItem { Text = "Sim", Value = "Sim" });
+
+}
+
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header" data-background-color="purple">
+                <h4 class="title">Editar Perfil</h4>
+                <p class="category">Preencha os Dados</p>
+            </div>
+            <div class="card-content">
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.ID_Paci)
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group label-floating">
+                                <label class="control-label">E-mail</label>
+                                @Html.EditorFor(model => model.Email_Paci, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Email_Paci, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group label-floating">
+                                <label class="control-label">Nome Completo</label>
+                                @Html.EditorFor(model => model.Nome_Paci, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Nome_Paci, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group label-floating">
+                                <label class="control-label">Telefone</label>
+                                @Html.EditorFor(model => model.Telefone_Paci, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Telefone_Paci, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group label-floating">
+                                <label class="control-label">CEP</label>
+                                @Html.EditorFor(model => model.CEP_Paci, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.CEP_Paci, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group label-floating">
+                                <label class="control-label">Endereço</label>
+                                @Html.EditorFor(model => model.Endereco_Paci, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Endereco_Paci, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group label-floating">
+                                <label class="control-label">Numero</label>
+                                @Html.EditorFor(model => model.Numero_Paci, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Numero_Paci, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group label-floating">
+                                <label class="control-label">Cidade</label>
+                                @Html.EditorFor(model => model.Cidade_Paci, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Cidade_Paci, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group label-floating">
+                                <label class="control-label">Estado</label>
+                                @Html.EditorFor(model => model.Estado_Paci, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Estado_Paci, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group label-floating">
+                                <label class="control-label">CPF</label>
+                                @Html.EditorFor(model => model.CPF_Paci, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.CPF_Paci, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group label-floating">
+                                <label class="control-label">RG</label>
+                                @Html.EditorFor(model => model.RG_Paci, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.RG_Paci, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group label-floating">
+                                <label class="control-label">Atividade Física</label>
+                                @Html.DropDownListFor(model => model.AtivFisic_Paci, ativFisc, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.AtivFisic_Paci, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group label-floating">
+                                <label class="control-label">Diabetes</label>
+                                @Html.DropDownListFor(model => model.Diabetes_Paci, diabetes, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Diabetes_Paci, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group label-floating">
+                                <label class="control-label">Etilismo</label>
+                                @Html.DropDownListFor(model => model.Etilismo_Paci, etilismo, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Etilismo_Paci, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group label-floating">
+                                <label class="control-label">Fumante</label>
+                                @Html.DropDownListFor(model => model.Fumanete_Paci, fumante, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Fumanete_Paci, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group label-floating">
+                                <label class="control-label">Hipertenso</label>
+                                @Html.DropDownListFor(model => model.Hipertens_Paci, hiperten, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Hipertens_Paci, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group label-floating">
+                                <label class="control-label">Neoplastia</label>
+                                @Html.DropDownListFor(model => model.Neoplasia_Paci, neoplast, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Neoplasia_Paci, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group label-floating">
+                                <label class="control-label">Peso</label>
+                                @Html.EditorFor(model => model.Peso_Paci, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Peso_Paci, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group label-floating">
+                                <label class="control-label">Altura</label>
+                                @Html.EditorFor(model => model.Altura_Paci, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Altura_Paci, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group label-floating">
+                                <label class="control-label">Alergias</label>
+                                @Html.TextBoxFor(model => model.Alergias_Paci, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Alergias_Paci, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-6">
+                            <div class="form-group label-floating">
+                                <label class="control-label">Doenças Crônicas</label>
+                                @Html.TextBoxFor(model => model.DoenCron_Paci, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.DoenCron_Paci, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group label-floating">
+                                <label class="control-label">Remédio Constante</label>
+                                @Html.TextBoxFor(model => model.RemeConsta_Paci, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.RemeConsta_Paci, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <a href="@Url.Action("Edit", "UsuarioPaciente")" data-target=".inbox-body" class="consulta"><button class="btn btn-primary pull-right">Trocar Senha</button></a>
+                    </div>
+
+                    <div class="col-md-9">
+                        <button type="submit" class="btn btn-primary pull-right">Atualizar Perfil</button>
+                    </div>
+                    <div class="clearfix"></div>
+                }
+            </div>
+        </div>
+    </div>
+    <style>
+        .card-avatar:hover .overlay {
+            opacity: 1;
+        }
+
+        .text {
+            color: white;
+            font-size: 20px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            width: 100%;
+            opacity: 0;
+            transition: .5s ease;
+            background-color: #008CBA;
+        }
+    </style>
+    <div class="col-md-4">
+        <div class="card card-profile">
+            <div class="card-avatar">
+                <a href="#teste">
+                    <img class="img" src="~/Content/images/user_icon.png" />
+                </a>
+                <img src="~/Content/images/img.jpg" alt="Avatar" class="image" />
+                <div class="overlay">
+                    <div class="text">Mudar Foto</div>
+                </div>
+            </div>
+            <div class="content">
+                <h6 class="category text-gray">Nome Paciente</h6>
+                <p>Descrição do Consultório</p>
+            </div>
+        </div>
+    </div>
+</div>
+

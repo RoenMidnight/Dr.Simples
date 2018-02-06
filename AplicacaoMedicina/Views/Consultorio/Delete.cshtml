@@ -1,0 +1,120 @@
+﻿@model AplicacaoMedicina.Models.Consultorio
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Consultorio</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome_Consu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome_Consu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CNPJ_Consu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CNPJ_Consu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CEP_Consu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CEP_Consu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Endereco_Consu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco_Consu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Numero_Consu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Numero_Consu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Complemento_Consu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Complemento_Consu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bairro_Consu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bairro_Consu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cidade_Consu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cidade_Consu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado_Consu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado_Consu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Responsavel_Consu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Responsavel_Consu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefone_Consu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefone_Consu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email_Consu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email_Consu)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

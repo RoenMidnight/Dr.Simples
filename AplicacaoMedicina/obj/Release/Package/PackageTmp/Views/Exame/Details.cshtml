@@ -1,0 +1,58 @@
+﻿@model AplicacaoMedicina.Models.Exame
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Exame</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ConvenioLaboratorio.Laboratorio.Nome_Labo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ConvenioLaboratorio.Laboratorio.Nome_Labo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PacienteConvenio.Codigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PacienteConvenio.Codigo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Data)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Realizado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Realizado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Entrega)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Entrega)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id_Exame }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

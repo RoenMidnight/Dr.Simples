@@ -1,0 +1,144 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutMedico.cshtml";
+}
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="card card-nav-tabs" id="cardData">
+                    <div class="card-header" data-background-color="purple">
+                        <div class="nav-tabs-navigation">
+                            <div class="nav-tabs-wrapper">
+                               
+                                <span class="nav-tabs-title title-fix" style="width: 40%;">
+                                    <div style="margin:0px; width:100%;">
+                                        <p>Médico:</p>
+                                        @Html.DropDownList("ID_MediConsu", new SelectList(ViewBag.ID_MediConsu, "Id", "Display"), new { @class = "form-control" } )
+                                    </div>
+                                    <div class="divDir">
+                                        <p>Data:</p>
+                                        <md-input-container flex-gt-md="30" style="margin: 0px;">
+                                            <input time="false" date="true" mdc-datetime-picker="" type="text" id="Data_Cons" name="Data_Cons"
+                                                   date="DD/MM/YYYY" format="DD/MM/YYYY" ng-change="testeData()"
+                                                   placeholder="" ng-model="date" min-date="minDate" max-date="maxDate" class="md-input">
+                                        </md-input-container>
+                                      
+                                       </div>
+                                </span>
+
+                                <style>                                    
+                                    #Data_Cons{
+                                        margin: 0px;
+                                        border-color: snow !important;
+                                        background-color: snow !important;
+
+                                    }
+                                    .form-control{
+                                        margin: 0px;
+                                        width: 100% !important;
+                                        background-image: none !important;
+                                        background-color: snow !important;
+                                    }
+                                    .form-group {
+                                        margin: 0px;
+                                        width: 100% !important;
+                                        background-image: none !important;
+                                        background-color: none !important;
+                                    }
+
+                                   #md-input-container.md-icon-float flex-gt-md-30{
+                                       margin: 0px;
+                                   }
+                                   .flex-gt-md-30{
+                                       max-width:65%;
+                                   }
+                                </style>
+
+                                <ul class="nav nav-tabs" data-tabs="tabs">
+                                    <li class="active">
+
+                                    </li>
+                                    <li class="">
+
+                                    </li>
+                                    <li class="">
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <style>
+                        .btn, .navbar .navbar-nav > li > a.btn {
+                            border: none;
+                            border-radius: 5px;
+                            position: relative;
+                            padding: 20px 25px;
+                            margin: 10px 8px;
+                            font-size: 15px;
+                            font-weight: 400;
+                            text-transform: uppercase;
+                            letter-spacing: 0;
+                            will-change: box-shadow, transform;
+                            transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+                        }
+
+                        #cardData {
+                            padding-bottom: 15px;
+                        }
+                    </style>
+
+
+
+                    <div class="card-content">
+                        <div class="tab-content">
+
+                            <div class="col-lg-12" style="height:100%!important">
+                                <div class="row">
+                                    <div class="col-md-8 col-md-offset-2" style=" margin-bottom 20px;">
+                                        <div class="alert" role="alert">
+                                           
+                                        </div>
+                                        <style>
+                                            .alert {
+                                                box-shadow: none;
+                                                padding: 0px;
+                                            }
+                                        </style>
+
+                                        <div>
+                                            <h5 style="text-align:center">Escolha a disponibilidade de horários</h5>
+                                        </div>
+                                        
+                                        <div id="conteuHorar">
+
+                                        </div>
+
+                                    </div>
+                                    <div class="confirmar col-sm-12 col-lg-12">
+                                        <div class="col-md-6">
+                                            <button class="btn btn-primary btn-block" id="sendAgenda" data-background-color="green"><i></i>Confirmar</button>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <button class="btn btn-primary btn-block" id="cleamAll" data-background-color="red">Limpar</button>
+                                        </div>
+
+
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>

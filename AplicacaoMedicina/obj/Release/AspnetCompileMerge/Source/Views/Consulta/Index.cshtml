@@ -1,0 +1,170 @@
+﻿@model IEnumerable<AplicacaoMedicina.Models.Consulta>
+
+@{
+    Layout = "~/Views/Shared/_LayoutMedico.cshtml";
+    var filtro = ViewBag.Filtro;
+}
+
+<div class="row">
+    <div class="col-md-9">
+
+        <div class="card">
+            <div class="card-header" data-background-color="purple">
+                <h4 class="title">Pacientes pendentes</h4>
+                <p class="category">Lista de pedidos de atendimentos ainda não respondidos</p>
+            </div>
+
+            <div class="card-content table-responsive">
+
+                <table id="tabela" class="table">
+                    <thead class="text-primary">
+                        <tr>
+                            <th>
+                                <b>Nome</b>
+                            </th>
+                            <th>
+                                <b>Telefone</b>
+                            </th>
+                            <th>
+                                <b>Médico</b>
+                            </th>                           
+                            <th>
+                                <b>Data Pretendida</b>
+                            </th>
+                            <th>
+                                <b>Situação</b>
+                            </th>
+                           
+
+                            <th>
+                                <b>Ação</b>
+                            </th>
+                        </tr>
+                    </thead>
+                    <style>
+                        .btn-acao {
+                            padding-left: 0px !important;
+                            padding-right: 0px !important;
+                        }
+
+                        .btn-acao i {
+                            font-size: x-large !important;
+                        }
+                        tr.odd:hover {                            
+                            background-color: #bee0c0;
+                        }
+                         tr.even:hover {                            
+                            background-color: #bee0c0;
+                        }
+                    </style>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <a href="@Url.Action("Details", "Consulta", new { id = item.ID_Consa })" data-target=".inbox-body" class="consulta" style="color:black">
+                                        @Html.DisplayFor(modelItem => item.Paciente.Nome_Paci)
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("Details", "Consulta", new { id = item.ID_Consa })" data-target=".inbox-body" class="consulta" style="color:black">
+                                        @Html.DisplayFor(modelItem => item.Paciente.Telefone_Paci)
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("Details", "Consulta", new { id = item.ID_Consa })" data-target=".inbox-body" class="consulta" style="color:black">
+                                        @Html.DisplayFor(modelItem => item.MedicoConsultorio.Medico.Nome_Medi)
+                                    </a>
+                                </td>                               
+                                <td>
+                                    <a href="@Url.Action("Details", "Consulta", new { id = item.ID_Consa })" data-target=".inbox-body" class="consulta" style="color:black">
+                                        @Html.DisplayFor(modelItem => item.Data_Consa)
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("Details", "Consulta", new { id = item.ID_Consa })" data-target=".inbox-body" class="consulta" style="color:black">
+                                        @Html.DisplayFor(modelItem => item.Situacao_Consa)
+                                    </a>
+                                </td>
+                               
+                                <td class="text-primary">
+
+                                    @if (item.Situacao_Consa != "Recusado")
+                                    {
+
+                                        <a href="@Url.Action("Edit", "Consulta", new { id = item.ID_Consa, acao = "Confirmado" })" data-target=".inbox-body" class="consulta">
+                                            <button type="button" rel="tooltip" title class="btn btn-primary btn-simple btn-xs btn-acao" data-original-title="Aceitar">
+                                                <i class="material-icons">check_circle</i>
+                                            </button>
+                                        </a>
+                                        <a href="@Url.Action("Edit", "Consulta", new { id = item.ID_Consa, acao = "Recusado" })" data-target=".inbox-body" class="consulta">
+                                            <button type="button" rel="tooltip" title class="btn btn-danger btn-simple btn-xs btn-acao" data-original-title="Cancelar">
+                                                <i class="material-icons">cancel</i>
+                                            </button>
+                                        </a> }
+                                    else {
+                                        <button type="button" rel="tooltip" title class="btn btn-default btn-simple btn-xs btn-acao" data-original-title="Aceitar">
+                                            <i class="material-icons">check_circle</i>
+                                        </button>
+                                        <button type="button" rel="tooltip" title class="btn btn-default btn-simple btn-xs btn-acao" data-original-title="Cancelar">
+                                            <i class="material-icons">cancel</i>
+                                        </button>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+
+        <div class="card">
+            <div class="card-header" data-background-color="purple">
+                <h4 class="title">Consultas</h4>
+                <p class="category"></p>
+            </div>
+            
+            <div class="card-content table-responsive">
+                <dt>                    
+                    <dl>
+                        <a href="@Url.Action("Index", "Consulta", new { filtro = "Confirmado"})">
+                            @if (filtro == "Confirmado") {
+                                <i class="material-icons" style="color:#4caf50">label</i>
+                            } Confirmadas
+                        </a>
+                    </dl>
+
+                    <dl>
+                        <a href="@Url.Action("Index","Consulta", new { filtro = "Em Espera"})">
+                            @if (filtro == "Em Espera")
+                            {
+                                <i class="material-icons" style="color:#4caf50">label</i>
+                            }
+                            Em Espera
+                        </a>
+                    </dl>  
+                    
+                    <dl>
+                        <a href="@Url.Action("Index","Consulta", new { filtro = "Recusado"})">
+                            @if (filtro == "Recusado"){
+                                <i class="material-icons" style="color:#4caf50">label</i>
+                            }
+                            Canceladas
+                        </a>
+                    </dl>                    
+                    <dl>
+                        <a href="@Url.Action("Index","Consulta")">
+                            @if (filtro == "Ambos") {
+                                <i class="material-icons" style="color:#4caf50">label</i>
+                            }
+                            Ambos
+                        </a>
+                    </dl>
+                </dt>
+            </div>
+
+        </div>
+    </div>
+</div>

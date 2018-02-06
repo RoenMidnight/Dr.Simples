@@ -1,0 +1,251 @@
+﻿@model AplicacaoMedicina.Models.Paciente
+
+@{
+    Layout = "";
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png" />
+    <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>Material Dashboard by Creative Tim</title>
+
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+    <link rel="stylesheet" href="../Content/styles.css" />
+
+    @Styles.Render("~/Content/doctorStyles/css")
+
+    <!--     Fonts and icons     -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+
+    <div class="wrapper">
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+
+                    <div class="col-md-12" style="margin-top: 6%;">
+                        <div class="card card-profile">
+
+                            <div class="card-avatar">
+
+                                <a href="">
+                                    <img class="img" src="../Content/images/user_icon.png" />
+                                </a>
+
+                            </div>
+
+                            <div class="content">
+
+                                <style>
+                                    .row {
+                                        width: 90% !important;
+                                        padding-left: 10% !important;
+                                        padding-right: 0px !important;
+                                        margin: 0;
+                                    }
+
+                                    .control-label {
+                                        left: 0;
+                                    }
+                                </style>
+                                <h6 class="category text-gray"></h6>
+                                <h4 class="card-title">Cadastre seus dados</h4>
+                                <p>Paciente</p>
+                                <div class="card-content">
+
+                                    @using (Html.BeginForm(null, null, FormMethod.Post, new { id="signUp"}))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                  
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">E-mail</label>
+                                                    @Html.EditorFor(model => model.Email_Paci, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Email_Paci, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">Sexo</label>
+
+                                                    <style>
+                                                        ul li {display: inline;
+                                                               margin-right: 10px;
+                                                        }
+                                                    </style>
+                                                                                                        
+                                                    <ul style="list-style:none;">
+                                                        <li>
+                                                            <label class="mdl-radio mdl-js-radio" for="Sexo_Paci">
+                                                                <input type="radio" class="mdl-radio mdl-js-radio" name="Sexo_Paci" id="Sexo_Paci" value="Masculino"><span class="mdl-radio__label">Masculino</span>
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label class="mdl-radio mdl-js-radio" for="Sexo_Paci">
+                                                                <input type="radio" class="mdl-radio mdl-js-radio" name="Sexo_Paci" id="Sexo_Paci" value="Feminino"><span class="mdl-radio__label">Feminino</span>
+                                                            </label>
+                                                        </li>
+                                                    </ul>   
+                                                   
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">Nome Completo</label>
+                                                    @Html.EditorFor(model => model.Nome_Paci, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Nome_Paci, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">Telefone</label>
+                                                    @Html.EditorFor(model => model.Telefone_Paci, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Telefone_Paci, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">CEP</label>
+                                                    @Html.EditorFor(model => model.CEP_Paci, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.CEP_Paci, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">Endereço</label>
+                                                    @Html.EditorFor(model => model.Endereco_Paci, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Endereco_Paci, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">Numero</label>
+                                                    @Html.EditorFor(model => model.Numero_Paci, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Numero_Paci, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">Cidade</label>
+                                                    @Html.EditorFor(model => model.Cidade_Paci, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Cidade_Paci, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">Estado</label>
+                                                    @Html.EditorFor(model => model.Estado_Paci, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Estado_Paci, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">CPF</label>
+                                                    @Html.EditorFor(model => model.CPF_Paci, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.CPF_Paci, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">RG</label>
+                                                    @Html.EditorFor(model => model.RG_Paci, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.RG_Paci, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">Senha</label>
+                                                    <input type="password" name="Senha_UsuPaci" id="Senha_UsuPaci" class="form-control"/>
+                                                    <span class="material-input"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">Confirmar Senha</label>
+                                                    <input type="password" id="Confirma_UsuPaci" class="form-control" />
+                                                    <span class="material-input"></span>
+                                                </div>                                                
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group label-floating">
+                                                    <span class="field-validation-error text-danger" data-valmsg-for="Senha_UsuPaci" data-valmsg-replace="true"><p id="valida" style="visibility:hidden;">Senhas não coincidem</p></span>
+                                                </div>
+                                             </div>
+                                        </div>
+
+
+                                            <button id="send" type="submit" class="btn btn-primary pull-center">Cadastrar</button>
+                                        
+                                        <div class="clearfix"></div>
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</body>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/doctorScripts")
+@Scripts.Render("~/bundles/date")
+
+<script>
+    $("#send").on("click", function () {
+        event.preventDefault();
+
+        if ($("#Senha_UsuPaci").val() == $("#Confirma_UsuPaci").val()) {
+            document.getElementById("signUp").submit();
+        } else {
+            $("#valida").css("visibility", "visible");
+        }
+
+    });
+
+    $("#Confirma_UsuPaci").on("blur", function () {
+        if ($("#Senha_UsuPaci").val() != $("#Confirma_UsuPaci").val()) {
+            $("#valida").css("visibility", "visible");
+        } else {
+            $("#valida").css("visibility", "hidden");
+        }
+    });
+
+</script>
+
+
+</html>

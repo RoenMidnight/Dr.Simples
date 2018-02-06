@@ -1,0 +1,84 @@
+﻿@model AplicacaoMedicina.Models.Medico
+
+<div class="modal-header">
+    <h4>Editar Médico</h4>
+</div>
+<div class="modal-body">
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.ID_Medi)
+            @Html.HiddenFor(model => model.ID_MediConsu)
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group label-floating">
+                        <label class="control-label">Nome</label>
+                        @Html.EditorFor(model => model.Medico.Nome_Medi, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Medico.Nome_Medi, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group label-floating">
+                        <label class="control-label">CRM</label>
+                        @Html.EditorFor(model => model.Medico.CRM_Medi, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Medico.CRM_Medi, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group label-floating">
+                        <label class="control-label">E-Mail</label>
+                        @Html.EditorFor(model => model.Medico.Email_Medi, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Medico.Email_Medi, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group label-floating">
+                        <label class="control-label">Telefone</label>
+                        @Html.EditorFor(model => model.Medico.Telefone_Medi, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Medico.Telefone_Medi, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group label-floating">
+                        <label class="control-label">Tipo de Inscrição</label>
+                        @Html.EditorFor(model => model.Medico.TipoInscri_Medi, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Medico.TipoInscri_Medi, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group label-floating">
+                        <label class="control-label">Ativo</label>
+                        @Html.EditorFor(model => model.ativo, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" class="btn btn-primary pull-right"> Editar </button>
+                </div>
+            </div>
+        </div>
+    }
+</div>

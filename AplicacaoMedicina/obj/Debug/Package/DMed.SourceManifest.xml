@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sitemanifest>
+  <IisApp path="C:\Users\Roen\Documents\Visual Studio 2015\Projects\AplicacaoMedicina\AplicacaoMedicina\obj\Debug\Package\PackageTmp" />
+  <setAcl path="C:\Users\Roen\Documents\Visual Studio 2015\Projects\AplicacaoMedicina\AplicacaoMedicina\obj\Debug\Package\PackageTmp" setAclResourceType="Directory" />
+  <setAcl path="C:\Users\Roen\Documents\Visual Studio 2015\Projects\AplicacaoMedicina\AplicacaoMedicina\obj\Debug\Package\PackageTmp" setAclUser="anonymousAuthenticationUser" setAclResourceType="Directory" />
+</sitemanifest>

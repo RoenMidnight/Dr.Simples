@@ -1,0 +1,148 @@
+﻿@model AplicacaoMedicina.Models.Consulta
+
+<div class="modal-header">
+    @if (ViewBag.Acao == "Confirmado")
+    { <h4 style="font-weight:bold">Confirmar Consulta</h4>
+    }
+    else { <h4 style="font-weight:bold">Cancelar Consulta</h4> }
+
+</div>
+<div class="modal-body">
+
+    @if (ViewBag.Acao == "Confirmado")
+    {
+        using (Html.BeginForm("Edit", "Consulta", FormMethod.Post, new { id = "edita" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.ID_Consa)
+            @Html.HiddenFor(model => model.Notas_Consa)
+            @Html.HiddenFor(model => model.DtMarc_Consa)
+            @Html.HiddenFor(model => model.ID_MediConsu)
+            @Html.HiddenFor(model => model.ID_Paci)
+            <input type="hidden" id="Motivo_Consa" name="Motivo_Consa" value="Confirmado" />
+            <input type="hidden" id="Situacao_Consa" name="Situacao_Consa" value="Confirmado" />
+
+            <div class="row">
+                <h4>Paciente</h4>
+                <br />
+                <dl>
+                    <dt><div class="table-like"><b>Nome:</b> </div>             <div class="table-like"> @Html.DisplayFor(model => model.Paciente.Nome_Paci)                 </div> </dt>
+                    <dt><div class="table-like"><b>E-Mail:</b></div>            <div class="table-like"> @Html.DisplayFor(model => model.Paciente.Email_Paci)               </div> </dt>
+                    <dt><div class="table-like"><b>Telefone:</b></div>          <div class="table-like"> @Html.DisplayFor(model => model.Paciente.Telefone_Paci)          </div> </dt>
+                    <dt><div class="table-like"><b>Data de Nascimento:</b></div><div class="table-like"> @Html.DisplayFor(model => model.Paciente.DtNasc_Paci)  </div> </dt>
+                    <hr />
+                    <h4>Médico</h4>
+                    <br />
+                    <dt><div class="table-like"><b>Nome:</b></div>     <div class="table-like">@Html.DisplayFor(model => model.MedicoConsultorio.Medico.Nome_Medi)  </div></dt>
+                    <dt><div class="table-like"><b>E-mail:</b></div>   <div class="table-like"> @Html.DisplayFor(model => model.MedicoConsultorio.Medico.Email_Medi)  </div></dt>
+                    <dt><div class="table-like"><b>Telefone:</b></div> <div class="table-like">@Html.DisplayFor(model => model.MedicoConsultorio.Medico.Telefone_Medi) </div> </dt>
+                    <dt><div class="table-like"><b>CRO:</b></div>      <div class="table-like">@Html.DisplayFor(model => model.MedicoConsultorio.Medico.CRM_Medi)  </div></dt>
+                </dl>
+                <hr />
+                <div class="form-group label-floating">
+                    <div class="table-like"><b>Data da Requisição:</b></div><div class="table-like">@Html.DisplayFor(model => model.DtMarc_Consa)</div> <br />
+                    <br />
+                        <div class="row">
+                            <div class="col-md-5">
+                                <label class="control-label">Data da Consulta</label>
+                                <input type="datetime-local" class="form-control" id="Data_Consa" name="Data_Consa" value="@Model.Data_Consa.ToString("yyyy-MM-ddThh:mm")" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-offset-2 col-md-10">
+                        <button type="button" value="Confirma" class="btn btn-primary pull-right">Confirmar Ação</button>
+                    </div>
+                </div>
+                }
+                }
+
+                @if (ViewBag.Acao == "Recusado")
+                {
+                    using (Html.BeginForm("Edit", "Consulta", FormMethod.Post, new { id = "edita" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.ID_Consa)
+                            @Html.HiddenFor(model => model.Notas_Consa)
+                            @Html.HiddenFor(model => model.Data_Consa)
+                            @Html.HiddenFor(model => model.DtMarc_Consa)
+                            @Html.HiddenFor(model => model.ID_MediConsu)
+                            @Html.HiddenFor(model => model.ID_Paci)
+                            <input type="hidden" name="Situacao_Consa" value="Recusado" />
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group label-floating">
+                                        <label class="control-label">Motivo</label>
+                                        @Html.EditorFor(model => model.Motivo_Consa, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Motivo_Consa, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <button type="button" value="Confirma" class="btn btn-primary pull-right">Confirmar Ação</button>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+
+            <style>
+                .table-like {
+                    display: inline-block;
+                    margin: 0;
+                    padding: 0;
+                    min-width: 125px;
+                }
+
+                dt {
+                    font-weight: normal;
+                }
+            </style>
+
+            <script>
+                $("#edita button").on("click", function (event) {
+                    event.preventDefault();
+
+                    console.log("entrou");
+
+                    var form = document.getElementById("edita");
+                    var data = $(form).serialize();
+                    var modulo = $("#edita").attr("action");
+
+                    console.log(data);
+
+                    $.ajax({
+                        url: modulo,
+                        type: 'POST',
+                        data: data,
+                        success: function (response) {
+                            if (response && response.success) {
+                                $('#myModal').modal('toggle');
+                                $('#' + $('#id').val() + '.mail_list').remove();
+                                $('.interior').remove();
+
+                                $('#' + $('#ID_Consa').val() + '.custom-item').remove();
+
+                                location.reload();
+
+                            } else {
+                                alert("Error");
+                            }
+                        }, error: function (x, y, err) {
+                            alert("Operação não efetuada");
+                        }
+                    });
+
+                });
+            </script>

@@ -1,0 +1,51 @@
+﻿@model AplicacaoMedicina.Models.Agenda
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutMedico.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Agenda</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MedicoConsultorio.ID_MediConsu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MedicoConsultorio.ID_MediConsu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Data_Agenda)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data_Agenda)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DSeman_Agenda)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DSeman_Agenda)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ativo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ativo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_Agenda }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

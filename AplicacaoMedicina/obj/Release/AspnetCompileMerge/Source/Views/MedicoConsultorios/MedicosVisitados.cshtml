@@ -1,0 +1,95 @@
+﻿@model IEnumerable<AplicacaoMedicina.Models.Consulta>
+
+@{
+    Layout = "~/Views/Shared/_LayoutPaciente.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="card">
+            <div class="card-header" data-background-color="purple">
+                <h4 class="title">Médicos Visitados</h4>
+                <p class="category">Lista de médicos visitados por você.</p>
+            </div>
+
+            <div class="card-content table-responsive">
+                <div class="alert" role="alert">
+
+                </div>
+                <style>
+                    .alert {
+                        box-shadow: none;
+                        padding: 0px;
+                    }
+                </style>
+
+                <table id="medicos" class="table">
+                    <thead class="text-primary">
+                        <tr>
+                            <th>
+                                <b>Nome</b>
+                            </th>
+                            <th>
+                                <b>Telefone</b>
+                            </th>
+                            <th>
+                                <b>Consultório</b>
+                            </th>                            
+                            <th>
+                                <center><b>Ação</b></center>
+                            </th>
+                        </tr>
+                    </thead>
+                    <style>
+                        .btn-acao {
+                            padding-left: 0px !important;
+                            padding-right: 0px !important;
+                        }
+
+                        .btn-acao i {
+                            font-size: x-large !important;
+                        }
+                    </style>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MedicoConsultorio.Medico.Nome_Medi)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MedicoConsultorio.Medico.Telefone_Medi)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MedicoConsultorio.Consultorio.Nome_Consu)
+                                </td>                               
+                                <td class="text-primary">
+                                    <center>
+                                        <a href="@Url.Action("Avaliacaos","Avaliacaos", new { id = item.ID_MediConsu})" data-target=".inbox-body" class="consulta">
+                                            <button type="button" rel="tooltip" title class="btn btn-primary btn-simple btn-xs btn-acao" data-original-title="Avaliar">
+                                                <i class="material-icons">edit</i>
+                                            </button>
+                                        </a>
+                                        <a href="@Url.Action("Confirma","Paciente", new { id = item.ID_MediConsu})" >
+                                            <button type="button" rel="tooltip" title class="btn btn-primary btn-simple btn-xs btn-acao" data-original-title="Marcar Consulta">
+                                                <i class="material-icons">content_paste</i>
+                                            </button>
+                                        </a>                                
+                                            <button id="favorita" type="button" rel="tooltip" title class="btn btn-primary btn-simple btn-xs btn-acao" data-original-title="Favoritar" value="@item.ID_MediConsu">
+                                                <i class="material-icons">favorite</i>
+                                            </button>                                  
+                                    </center>                                
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+               
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+

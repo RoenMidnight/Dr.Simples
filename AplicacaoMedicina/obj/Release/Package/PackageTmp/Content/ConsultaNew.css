@@ -1,0 +1,46 @@
+﻿ .confirmar{
+     margin-top: 20px;
+     margin-bottom: 20px;
+ }
+ @media(min-width: 539px){
+     .title-fix{
+         display: flex;
+     }
+
+     .title-fix div{
+         display: flex;
+     }
+
+     .title-fix .divDir{
+         position: absolute;
+         right: 0px;
+         width: 231px;
+     }
+     .title-fix p{
+         margin: 0;
+         padding-right: 5px;
+         line-height: 30px;
+     }
+ }
+ @media(max-width: 539px){
+     .title-fix{
+         display: block;
+         width: 100%;
+     }
+     .title-fix .divDir{
+         width: 100%;
+
+     }
+     .title-fix p{
+         width:50px;
+         margin: 0;
+     }
+
+     .title-fix input{
+         width:100%;
+     }
+ }
+
+ .btnativo{
+     background: #cc4946 !important;
+ }

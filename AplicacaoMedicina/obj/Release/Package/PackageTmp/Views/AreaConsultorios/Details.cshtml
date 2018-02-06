@@ -1,0 +1,35 @@
+﻿@model AplicacaoMedicina.Models.AreaConsultorio
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutMedico.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AreaConsultorio</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Consultorio.Nome_Consu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Consultorio.Nome_Consu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome_Area)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome_Area)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_Area }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,208 @@
+﻿@model AplicacaoMedicina.Models.Consultorio
+
+@{
+    Layout = "~/Views/Shared/_LayoutMedico.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header" data-background-color="purple">
+                <h4 class="title">Editar Consultorio</h4>
+                <p class="category">Preencha os Dados</p>
+            </div>
+            <div class="card-content">
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+
+                   @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                   @Html.HiddenFor(model => model.ID_Consu)
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group label-floating">
+                                <label class="control-label">Responsável</label>
+                                @Html.EditorFor(model => model.Responsavel_Consu, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Responsavel_Consu, "", new { @class = "text-danger" })
+                                <span class="material-input"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                   <div class="row">
+                       <div class="col-md-12">
+                           <div class="form-group label-floating">
+                               <label class="control-label">E-Mail</label>
+                               @Html.EditorFor(model => model.Email_Consu, new { htmlAttributes = new { @class = "form-control" } })
+                               @Html.ValidationMessageFor(model => model.Email_Consu, "", new { @class = "text-danger" })
+                               <span class="material-input"></span>
+                           </div>
+                       </div>
+                   </div>
+
+                   <div class="row">
+                       <div class="col-md-6">
+                           <div class="form-group label-floating">
+                               <label class="control-label">Nome Consultório</label>
+                               @Html.EditorFor(model => model.Nome_Consu, new { htmlAttributes = new { @class = "form-control" } })
+                               @Html.ValidationMessageFor(model => model.Nome_Consu, "", new { @class = "text-danger" })
+                               <span class="material-input"></span>
+                           </div>
+                       </div>
+                       <div class="col-md-6">
+                           <div class="form-group label-floating">
+                               <label class="control-label">Razão Social</label>
+                               @Html.EditorFor(model => model.Razao_Consu, new { htmlAttributes = new { @class = "form-control" } })
+                               @Html.ValidationMessageFor(model => model.Razao_Consu, "", new { @class = "text-danger" })
+                               <span class="material-input"></span>
+                           </div>
+                       </div>
+                   </div>
+
+                   <div class="row">
+                       <div class="col-md-4">
+                           <div class="form-group label-floating">
+                               <label class="control-label">CEP</label>
+                               @Html.EditorFor(model => model.CEP_Consu, new { htmlAttributes = new { @class = "form-control" } })
+                               @Html.ValidationMessageFor(model => model.CEP_Consu, "", new { @class = "text-danger" })
+                               <span class="material-input"></span>
+                           </div>
+                       </div>
+                       <div class="col-md-8">
+                           <div class="form-group label-floating">
+                               <label class="control-label">Endereço</label>
+                               @Html.EditorFor(model => model.Endereco_Consu, new { htmlAttributes = new { @class = "form-control" } })
+                               @Html.ValidationMessageFor(model => model.Endereco_Consu, "", new { @class = "text-danger" })
+                               <span class="material-input"></span>
+                           </div>
+                       </div>
+                   </div>
+
+                   <div class="row">
+                       <div class="col-md-4">
+                           <div class="form-group label-floating">
+                               <label class="control-label">Numero</label>
+                               @Html.EditorFor(model => model.Numero_Consu, new { htmlAttributes = new { @class = "form-control" } })
+                               @Html.ValidationMessageFor(model => model.Numero_Consu, "", new { @class = "text-danger" })
+                               <span class="material-input"></span>
+                           </div>
+                       </div>
+                       <div class="col-md-4">
+                           <div class="form-group label-floating">
+                               <label class="control-label">Bairro</label>
+                               @Html.EditorFor(model => model.Bairro_Consu, new { htmlAttributes = new { @class = "form-control" } })
+                               @Html.ValidationMessageFor(model => model.Bairro_Consu, "", new { @class = "text-danger" })
+                               <span class="material-input"></span>
+                           </div>
+                       </div>
+                       <div class="col-md-4">
+                           <div class="form-group label-floating">
+                               <label class="control-label">Cidade</label>
+                               @Html.EditorFor(model => model.Cidade_Consu, new { htmlAttributes = new { @class = "form-control" } })
+                               @Html.ValidationMessageFor(model => model.Cidade_Consu, "", new { @class = "text-danger" })
+                               <span class="material-input"></span>
+                           </div>
+                       </div>                       
+                   </div>
+
+                   <div class="row">
+                       <div class="col-md-4">
+                           <div class="form-group label-floating">
+                               <label class="control-label">Estado</label>
+                               @Html.EditorFor(model => model.Estado_Consu, new { htmlAttributes = new { @class = "form-control" } })
+                               @Html.ValidationMessageFor(model => model.Estado_Consu, "", new { @class = "text-danger" })
+                               <span class="material-input"></span>
+                           </div>
+                       </div>                      
+                       <div class="col-md-8">
+                           <div class="form-group label-floating">
+                               <label class="control-label">Complemento</label>
+                               @Html.EditorFor(model => model.Complemento_Consu, new { htmlAttributes = new { @class = "form-control" } })
+                               @Html.ValidationMessageFor(model => model.Complemento_Consu, "", new { @class = "text-danger" })
+                               <span class="material-input"></span>
+                           </div>
+                       </div>
+                   </div>
+
+                   <div class="row">
+                       <div class="col-md-6">
+                           <div class="form-group label-floating">
+                               <label class="control-label">CNPJ</label>
+                               @Html.EditorFor(model => model.CNPJ_Consu, new { htmlAttributes = new { @class = "form-control" } })
+                               @Html.ValidationMessageFor(model => model.CNPJ_Consu, "", new { @class = "text-danger" })
+                               <span class="material-input"></span>
+                           </div>
+                       </div>        
+                       <div class="col-md-6">
+                           <div class="form-group label-floating">
+                               <label class="control-label">Telefone</label>
+                               @Html.EditorFor(model => model.Telefone_Consu, new { htmlAttributes = new { @class = "form-control" } })
+                               @Html.ValidationMessageFor(model => model.Telefone_Consu, "", new { @class = "text-danger" })
+                               <span class="material-input"></span>
+                           </div>
+                       </div>
+
+                   </div>
+
+                   
+                   <div class="col-md-3">
+                       <a href="@Url.Action("Edit", "UsuarioConsultorios")" data-target=".inbox-body" class="consulta"><button class="btn btn-primary pull-right">Trocar Senha</button></a>
+                   </div>                   
+
+                   <div class="col-md-9">
+                       <button type="submit" class="btn btn-primary pull-right">Atualizar Perfil</button>
+                   </div>
+                   <div class="clearfix"></div>
+                }
+            </div>
+        </div>
+    </div>
+    <style>
+        .card-avatar:hover .overlay {
+            opacity: 1;
+        }
+
+        .text {
+            color: white;
+            font-size: 20px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            width: 100%;
+            opacity: 0;
+            transition: .5s ease;
+            background-color: #008CBA;
+        }
+    </style>
+    <div class="col-md-4" style="visibility:hidden;">
+        <div class="card card-profile">
+            <div class="card-avatar">
+                <a href="#teste">
+                    <img class="img" src="~/Content/images/img.jpg" />
+                </a>
+                <img src="~/Content/images/img.jpg" alt="Avatar" class="image" />
+                <div class="overlay">
+                    <div class="text">Mudar Foto</div>
+                </div>
+            </div>
+            <div class="content">
+                <h6 class="category text-gray">Nome Consultorio</h6>
+                <p>Descrição do Consultório</p>
+            </div>
+        </div>
+    </div>
+</div>

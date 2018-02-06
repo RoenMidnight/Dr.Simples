@@ -1,0 +1,66 @@
+﻿@model AplicacaoMedicina.Models.Medico
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Medico</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Area.Nome_Area)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Area.Nome_Area)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome_Medi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome_Medi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CRM_Medi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CRM_Medi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email_Medi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email_Medi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefone_Medi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefone_Medi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoInscri_Medi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoInscri_Medi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_Medi }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

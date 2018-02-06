@@ -1,0 +1,1184 @@
+﻿@{
+    Layout = "";
+
+    var Modulo = ViewContext.RouteData.Values["controller"].ToString() + "/" + ViewContext.RouteData.Values["action"].ToString();
+}
+
+<!doctype html>
+<html lang="en" ng-app="mdDatetimePickerDemo">
+<head>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png" />
+    <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Doutor Simples - Saúde ao seu Alcance</title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="apple-touch-icon" sizes="57x57" href="../../Content/img/favicons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="../../Content/img/favicons/apple-touch-icon-60x60.png">
+    <link rel="icon" type="image/png" href="../../Content/img/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="../../Content/img/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="../../Content/img/favicons/manifest.json">
+    <link rel="shortcut icon" href="../../Content/img/favicons/favicon.ico">
+    <meta name="msapplication-TileColor" content="#00a8ff">
+    <meta name="msapplication-config" content="../../Content/img/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" href="../../Content/styles.css" />
+
+    @Styles.Render("~/Content/doctorStyles/css")
+
+    @if (Modulo == "Paciente/Confirma" || Modulo == "Consultorio/Confirma")
+    {
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel='stylesheet' type='text/css'>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/github.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.0.0-rc3/angular-material.min.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="../../Content/material-datetimepicker.min.css" type="text/css" />
+    }
+
+    @if (Modulo == "MedicoConsultorios/MedicosVisitados" ||
+                 Modulo == "MedicoConsultorios/MedicosFavoritos")
+    {
+        <link href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel='stylesheet' type='text/css'>
+    }
+
+    @if (Modulo == "Paciente/ProcurarMedico")
+    {
+        <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="Stylesheet"></link>
+        <link href="https://jqueryui.com/resources/demos/style.css" rel="stylesheet" />
+
+        <style>
+            .main-panel {
+                overflow-y: hidden;
+                overflow-x: hidden;
+            }
+        </style>
+    }
+
+    <!-- Hotjar Tracking Code for doutorsimples.com.br -->
+    <script>
+        (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:612121,hjsv:5};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+
+    <!--     Fonts and icons     -->
+    <link href="../../Content/font-awesome.min.css" rel="stylesheet">
+    <link href="../../Content/font-Roboto.css" rel='stylesheet' type='text/css'>
+
+</head>
+
+<body ng-controller='DemoCtrl'>
+
+
+
+    <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="inbox-body">
+                    @if (Modulo == "Paciente/Confirma" || Modulo == "Consultorio/Confirma")
+                    {
+
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">×</button>
+                            <h4>Confirmar Consulta</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form action="/Consulta/Create" method="post">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" value="@ViewBag.MedConsul" name="ID_MediConsu" id="MediConsuClick" />
+                                <input type="hidden" name="Data_Cons" id="DataClick" />
+                                <input type="hidden" name="Hora_Cons" id="HoraClick" />
+
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <dt><div class="table-like"><b>Data:</b> </div>             <div id="Data_Consu" class="table-like">  </div> </dt>
+                                        <dt><div class="table-like"><b>Médico:</b></div>            <div id="Medi_Consu" class="table-like">  </div> </dt>
+                                        <dt><div class="table-like"><b>Consultório:</b></div>       <div id="Cons_Consu" class="table-like">  </div> </dt>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <button type="submit" value="Confirma" class="btn btn-primary pull-right">Confirmar</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <style>
+                            .table-like {
+                                display: inline-block;
+                                margin: 0;
+                                padding: 0;
+                                min-width: 125px;
+                            }
+
+                            dt {
+                                font-weight: normal;
+                            }
+                        </style>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="wrapper">
+        <div class="sidebar" data-color="purple" data-image="../../Content/images/sidebar-1.jpg">
+            <!--
+                Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
+
+                Tip 2: you can also add an image using data-image tag
+            -->
+            <div class="logo">
+                <a href="/Paciente/Dashboard" class="simple-text">
+                    Doutor Simples
+                </a>
+            </div>
+            <div class="sidebar-wrapper">
+                <ul class="nav">
+
+                    @if (Modulo == "Paciente/Dashboard")
+                    {
+                        @Html.Raw("<li class=\"active\">");
+                    }
+                    else { @Html.Raw("<li>");
+                    }
+
+                    <a href="/Paciente/Dashboard">
+                        <i class="material-icons">dashboard</i>
+                        <p>Dashboard</p>
+                    </a>
+
+                    @Html.Raw("</li>")
+
+                    @if (Modulo == "Paciente/Edit")
+                    {
+                        @Html.Raw("<li class=\"active\">");
+                    }
+                    else { @Html.Raw("<li>");
+                    }
+
+                    <a href="/Paciente/Edit/">
+                        <i class="material-icons">person</i>
+                        <p>Perfil</p>
+                    </a>
+
+                    @Html.Raw("</li>")
+
+                    @if (Modulo == "MedicoConsultorios/MedicosVisitados")
+                    {
+                        @Html.Raw("<li class=\"active\">");
+                    }
+                    else {@Html.Raw("<li>");
+                    }
+
+                    <a href="/MedicoConsultorios/MedicosVisitados">
+                        <i class="material-icons">content_paste</i>
+                        <p>Médicos Visitados</p>
+                    </a>
+
+                    @Html.Raw("</li>")
+
+                    @if (Modulo == "Paciente/ProcurarMedico")
+                    {
+                        @Html.Raw("<li class=\"active\">");
+                    }
+                    else { @Html.Raw("<li>");
+                    }
+                    <a href="/Paciente/ProcurarMedico">
+                        <i class="material-icons">search</i>
+                        <p>Procurar Médico</p>
+                    </a>
+                    @Html.Raw("</li>")
+
+                    @if (Modulo == "MedicoConsultorios/MedicosFavoritos")
+                    {
+                        @Html.Raw("<li class=\"active\">");
+                    }
+                    else { @Html.Raw("<li>");
+                    }
+                    <a href="/MedicoConsultorios/MedicosFavoritos">
+                        <i class="material-icons">favorite</i>
+                        <p>Favoritos</p>
+                    </a>
+                    @Html.Raw("</li>")
+
+
+
+                </ul>
+
+            </div>
+        </div>
+        <div class="main-panel">
+            <nav class="navbar navbar-transparent navbar-absolute">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        @if (Modulo == "Paciente/Dashboard")
+                        {
+                            <a class="navbar-brand" href="#">Dashboard</a> }
+                        @if (Modulo == "Paciente/Edit")
+                        {
+                            <a class="navbar-brand" href="#">Perfil</a> }
+                        @if (Modulo == "MedicoConsultorios/MedicosVisitados")
+                        {
+                            <a class="navbar-brand" href="#">Médicos</a> }
+                        @if (Modulo == "Paciente/ProcurarMedico")
+                        {
+                            <!--    <div class="collapse navbar-collapse">
+                                    <ul class="nav navbar-nav navbar-left">
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                <p>Mapas</p>
+                                                <p class="hidden-lg hidden-md">Mapas</p>
+                                            </a>
+                                            <ul class="dropdown-menu">
+
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>-->
+                        }
+                        @if (Modulo == "MedicoConsultorios/MedicosFavoritos")
+                        {
+                            <a class="navbar-brand" href="#">Medicos</a> }
+                        @if (Modulo == "Paciente/Confirma")
+                        {
+                            <a class="navbar-brand" href="#">Confirmação de Consulta</a> }
+                        @if (Modulo == "Paciente/SelectDoc")
+                        {
+                            <a class="navbar-brand" href="#">Médicos do Consultório</a> }
+
+                    </div>
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                           <!-- <li>
+                                <span class="noti glyphicon glyphicon-bell"><span class="count">&nbsp;</span></span>
+                                <div class="noti-content">
+                                    <div class="noti-top-arrow"></div>
+                                    <ul id="notiContent"></ul>
+                                </div>
+                            </li>
+                            <style type="text/css">
+                               
+                                .noti-content {
+                                    position: fixed;
+                                    right: 100px;
+                                    background: #e5e5e5;
+                                    border-radius: 4px;
+                                    top: 47px;
+                                    width: 250px;
+                                    display: none;
+                                    border: 1px solid #9E988B;
+                                }
+
+                                ul#notiContent {
+                                    max-height: 200px;
+                                    overflow: auto;
+                                    padding: 0px;
+                                    margin: 0px;
+                                    padding-left: 20px;
+                                }
+
+                                    ul#notiContent li {
+                                        margin: 3px;
+                                        padding: 6px;
+                                        background: #fff;
+                                    }
+
+                                .noti-top-arrow {
+                                    border-color: transparent;
+                                    border-bottom-color: #F5DEB3;
+                                    border-style: dashed dashed solid;
+                                    border-width: 0 8.5px 8.5px;
+                                    position: absolute;
+                                    right: 32px;
+                                    top: -8px;
+                                }
+
+                                span.noti {
+                                    color: #FF2323;
+                                    margin: 15px;
+                                    position: fixed;
+                                    right: 100px;
+                                    font-size: 18px;
+                                    cursor: pointer;
+                                }
+
+                                span.count {
+                                    position: relative;
+                                    top: -3px;
+                                }
+                            </style> -->
+
+
+                           <!--   <li>
+                                  <a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
+                                      <i class="material-icons">person</i>
+                                      <p class="hidden-lg hidden-md">Profile</p>
+                                  </a>
+                              </li> -->
+
+                            <li>
+                                <a href="~/UsuarioPaciente/Logoff">
+                                    <i class="material-icons" title="Sair">exit_to_app</i>Sair
+                                </a>
+                            </li>
+                        </ul>
+
+
+                    </div>
+                </div>
+            </nav>
+            @if (Modulo == "Paciente/ProcurarMedico")
+            {
+                <div class="dropdown">
+                    <div id="floating-panel" class="container-fluid dropdown-menu">
+
+                        <div id="retPanel" class="row">
+                            <div class="col-lg-3 col-md-3">
+                                <div class="form-group  is-empty">
+                                    <input type="text" class="form-control" placeholder="Cidade" id="txtCidade">
+                                    <span class="material-input"></span>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3">
+                                <div class="form-group  is-empty" id="especialidade">
+                                    <input type="text" class="form-control" placeholder="Especialidade" id="txtEspecialidade">
+                                    <span class="material-input"></span>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3">
+                                <div class="form-group  is-empty">
+                                    <input type="text" class="form-control" placeholder="Médico" id="txtMedico">
+                                    <span class="material-input"></span>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2">
+                                <div class="form-group  is-empty">
+                                    <select id="filtro" name="filtro" class="form-control">
+                                        <option value="Medico">Médico</option>
+                                        <option value="Consultorio">Consultório</option>
+                                    </select>
+                                    <span class="material-input"></span>
+                                </div>
+                            </div>
+                            <div class="col-lg-1 col-md-2" style="margin-top:0px;">
+                                <button id="buscaMed" type="submit" class="btn btn-white btn-round btn-just-icon">
+                                    <i class="material-icons">search</i><div class="ripple-container"></div>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                        <i id="retMenu" class="material-icons">drag_handle</i><div class="ripple-container"></div>
+                    </button>
+                </div>
+
+                <style>
+                    #retMenu {
+                        display: block;
+                    }
+
+
+                    #floating-panel {
+                        position: absolute;
+                        background-color: #eeeeee;
+                        padding: 5px;
+                        border: 0px solid #999;
+                        border-radius: 10px;
+                        text-align: center;
+                        font-family: 'Roboto','sans-serif';
+                        line-height: 30px;
+                        padding-left: 10px;
+                        width: 100%;
+                        /*  height: 10%;*/
+                        box-shadow: 4px 5px 10px 0px;
+                        /* display: block; */
+                    }
+
+                    .dropdown {
+                        z-index: 1030;
+                        width: 95%;
+                    }
+
+
+                    .dropdown-menu {
+                        min-width: 100%;
+                    }
+
+                    .form-group {
+                        padding-bottom: 7px;
+                        margin: 10px 0 0 0;
+                    }
+
+                    #buscaMed {
+                        background: linear-gradient(60deg, #66bb6a, #43a047);
+                    }
+
+                        #buscaMed i {
+                            color: white;
+                        }
+
+                    .fechada {
+                        display: none;
+                    }
+                </style>
+            }
+            @if (Modulo != "Paciente/ProcurarMedico")
+            {
+
+                @Html.Raw("<div class='content'>");
+                @Html.Raw("<div class='container-fluid'>");
+
+            }
+
+            @RenderBody()
+
+            @if (Modulo != "Paciente/ProcurarMedico")
+            {
+                @Html.Raw("</div>");
+                @Html.Raw("</div>");
+            }
+            <!--   <footer class="footer">
+                   <div class="container-fluid">
+                       <nav class="pull-left">
+
+                       </nav>
+
+                   </div>
+               </footer> -->
+        </div>
+    </div>
+</body>
+<!--   Core JS Files   -->
+
+@Scripts.Render("~/bundles/jquery")
+<script src="~/Scripts/jquery.signalR-2.2.2.min.js"></script>
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/doctorScripts")
+@Scripts.Render("~/bundles/inputmask")
+
+
+<script>
+    $(document).ajaxStart(function () {
+        $("#loading").attr("style", "visibility: visible");
+    }).ajaxStop(function () {
+        $("#loading").attr("style", "visibility: hidden");
+    });
+    /*
+    $(function () {
+        // Click on notification icon for show notification
+        $('span.noti').click(function (e) {
+            e.stopPropagation();
+            $('.noti-content').show();
+            var count = 0;
+            count = parseInt($('span.count').html()) || 0;
+            //only load notification if not already loaded
+            if (count > 0) {
+                updateNotification();
+            }
+            $('span.count', this).html('&nbsp;');
+        })
+        // hide notifications
+        $('html').click(function () {
+            $('.noti-content').hide();
+        })
+        // update notification
+        function updateNotification() {
+            $('#notiContent').empty();
+            $('#notiContent').append($('<li>Loading...</li>'));
+            $.ajax({
+                type: 'GET',
+                url: '/home/GetNotificationContacts',
+                success: function (response) {
+                    $('#notiContent').empty();
+                    if (response.length  == 0) {
+                        $('#notiContent').append($('<li>No data available</li>'));
+                    }
+                    $.each(response, function (index, value) {
+                        $('#notiContent').append($('<li>New contact : ' + value.ContactName + ' (' + value.ContactNo + ') added</li>'));
+                    });
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            })
+        }
+        // update notification count
+        function updateNotificationCount() {
+            var count = 0;
+            count = parseInt($('span.count').html()) || 0;
+            count++;
+            $('span.count').html(count);
+        }
+        // signalr js code for start hub and send receive notification
+        var notificationHub = $.connection.notificationHub;
+        $.connection.hub.start().done(function () {
+            console.log('Notification hub started');
+        });
+        //signalr method for push server message to client
+        notificationHub.client.notify = function (message) {
+            if (message && message.toLowerCase() == "added") {
+                updateNotificationCount();
+            }
+        }
+    }); */
+</script>
+
+@if (Modulo == "Paciente/Confirma")
+{
+    @Scripts.Render("~/bundles/date");
+}
+
+
+@if (Modulo == "MedicoConsultorios/MedicosVisitados")
+{
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"> </script>
+
+    <script>
+        $(document).ready(function () {
+            $('#medicos').DataTable({
+                "searching": false,
+                "info": false,
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Portuguese-Brasil.json"
+                }
+            });
+        });
+
+
+        $("button#favorita").on("click", function () {
+            //  event.preventDefault();
+
+            var dados = "id=" + $(this).attr("value");
+
+            $.ajax({
+                url: '/Avaliacaos/Favoritar',
+                type: 'POST',
+                data: dados,
+                success: function (response) {
+                    if (response && response.success) {
+                        $('.alert').addClass('alert-success');
+                        $('.alert').append('Medico Favoritado.');   
+                        $('.alert').css('padding','15');
+                    } else {
+                        $('.alert').addClass('alert-warning');
+                        $('.alert').append('Medico não Atualizados.'); 
+                        $('.alert').css('padding','15');
+                    }
+
+                    $(".alert").alert();
+                },
+                error: function (err) {
+                    $("#myModalContent").replaceWith("<div id=myModalContent> <div class=modal-header><button type=button class=close data-dismiss=modal id=closeModal>&times;</button> <h4>Detalhes Operação</h4></div> <div class=modal-body>Ocorreu algum erro.</div> </div>");
+                    $("#myModal").modal('toggle');
+                }
+            });
+
+        });
+
+    </script>
+    <style>
+        table.dataTable thead th {
+            border-bottom: 1px solid #aaaaaa;
+        }
+
+        table.dataTable.no-footer {
+            border-bottom: 1px solid #aaaaaa;
+        }
+    </style>
+}
+
+@if (Modulo == "MedicoConsultorios/MedicosFavoritos")
+{
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"> </script>
+
+    <script>
+        $(document).ready(function () {
+            $('#medicos').DataTable({
+                "searching": false,
+                "info": false,
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Portuguese-Brasil.json"
+                }
+            });
+        });
+
+        $("button#favorita").on("click", function () {
+            //  event.preventDefault();
+
+            var dados = "id=" + $(this).attr("value");
+
+            $.ajax({
+                url: '/Avaliacaos/RemoverFav',
+                type: 'POST',
+                data: dados,
+                success: function (response) {
+                    if (response && response.success) {
+                        $('.alert').addClass('alert-success');
+                        $('.alert').append('Medico Removido.');   
+                        $('.alert').css('padding','15');
+                    } else {
+                        $('.alert').addClass('alert-warning');
+                        $('.alert').append('Medico não Atualizados.'); 
+                        $('.alert').css('padding','15');
+                    }
+
+                    $(".alert").alert();
+                },
+                error: function (err) {
+                    $("#myModalContent").replaceWith("<div id=myModalContent> <div class=modal-header><button type=button class=close data-dismiss=modal id=closeModal>&times;</button> <h4>Detalhes Operação</h4></div> <div class=modal-body>Ocorreu algum erro.</div> </div>");
+                    $("#myModal").modal('toggle');
+                }
+            });
+
+        });
+
+    </script>
+    <style>
+        table.dataTable thead th {
+            border-bottom: 1px solid #aaaaaa;
+        }
+
+        table.dataTable.no-footer {
+            border-bottom: 1px solid #aaaaaa;
+        }
+    </style>
+}
+
+
+@if (Modulo == "Paciente/Confirma" || Modulo == "Consultorio/Confirma")
+{
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-animate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-aria.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.0.0-rc3/angular-material.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment-with-locales.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+
+    <script type="text/javascript" src="../../Scripts/consulConfirma/beautifier.js"></script>
+    <script type="text/javascript" src="../../Scripts/consulConfirma/angular-material-datetimepicker.js"></script>
+    <script type="text/javascript" src="../../Scripts/consulConfirma/demo.js"></script>
+
+
+}
+
+
+@if (Modulo == "Paciente/ProcurarMedico")
+{
+     <!--  Google Maps Plugin    -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAU_tiKoaJXyYwl6CJqCS0V8z45pL2LE4w&libraries=places" async defer></script>
+    <script src="../../Scripts/markercluster/src/markerclusterer.js"> </script>
+
+    <script type="text/javascript" src="../../Scripts/GMap.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+
+    <script>
+        var tags = [];
+
+        var array = @Html.Raw(Json.Encode(@ViewBag.AreaAc));
+
+        for(var i = 0; i < array.length; i++) {
+            tags[i] = array[i];
+        }
+
+        $("#txtEspecialidade").autocomplete({
+            source: tags,
+            appendTo: "#especialidade"
+        });
+    </script>
+
+    <style>
+        .ui-autocomplete {
+            position: absolute;
+            top: 35px;
+            /*left: 40.3%; */
+            cursor: default;
+            z-index: 300;
+            !important;
+            height: 200px;
+            overflow-x: hidden;
+            overflow-y: scroll;
+        }
+
+        #markerMed {
+            font-weight: bold;
+        }
+
+        #markerConsult {
+            font-style: italic;
+        }
+
+        .modal-content {
+            width: 700px;
+        }
+    </style>
+
+
+    <script>
+
+
+        /*   $(document).ajaxStart(function () {
+               $("#loading").attr("style", "visibility: visible");
+           }).ajaxStop(function () {
+               $("#loading").attr("style", "visibility: hidden");
+           });*/
+
+        var altura = $("#retPanel").height();
+
+        $("#retMenu").trigger("click");
+
+        $(function() {
+            $('.dropdown').on({
+                "click": function(event) {
+                    if ($(event.target).closest('.dropdown-toggle').length) {
+                        $(this).data('closable', true);
+                    } else {
+                        $(this).data('closable', false);
+                    }
+                },
+                "hide.bs.dropdown": function(event) {
+                    hide = $(this).data('closable');
+                    $(this).data('closable', true);
+                    return hide;
+                }
+            });
+        });
+
+        $('#txtCidade').keypress(function(e){
+            if(e.which == 13){
+                $('#buscaMed').trigger('click');
+            }
+        });
+        $('#txtEspecialidade').keypress(function(e){
+            if(e.which == 13){
+                $('#buscaMed').trigger('click');
+            }
+        });
+        $('#txtMedico').keypress(function(e){
+            if(e.which == 13){
+                $('#buscaMed').trigger('click');
+            }
+        });
+
+        $('#filtro').on('change', function () {
+
+            if ($(this).val() == "Medico") {
+                $('#txtMedico').attr("placeholder", "Médico");
+            } else {
+                $('#txtMedico').attr("placeholder", "Consultório");
+            }
+        });
+    </script>
+
+
+
+}
+else {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Javascript method's body can be found in assets/js/demos.js
+            demo.initDashboardPageCharts();
+        });
+    </script>
+}
+
+@if (Modulo == "Consultorio/Confirma")
+{
+    <script>
+
+        $(document).on('click', '#ChangeDate', function () {
+            setTimeout(function(){
+                $("#Data_Cons").trigger("change");
+            }, 500);
+        });
+
+        $(document).on('click', 'a.dtp-select-day.selected', function () {
+            setTimeout(function () {
+                $("#Data_Cons").trigger("change");
+            }, 500);
+        });
+
+        $(document).on('change', "#ID_MediConsu", function () {
+            $("#Data_Cons").trigger("change");
+        });
+
+        $("#Data_Cons").trigger("change");
+
+        $(document).on("click", "#openModal", function(){
+            $("#DataClick").val($("#Data_Cons").val());
+            $("#HoraClick").val($(this).val());
+            $("#MediConsuClick").val($("#ID_MediConsu").val());
+
+            $("#Data_Consu").html($("#Data_Cons").val() +" - "+ $(this).val());
+            $("#Medi_Consu").html($("#ID_MediConsu").html());
+            $("#Cons_Consu").html($("#consuContent").html());
+
+            $("#myModal").modal('toggle');
+        });
+
+        $("#iconClick").on("click", function(){
+            $("#Data_Cons").focus();
+        });
+
+        $("#Data_Cons").change( function () {
+
+            var dataCons = $("#Data_Cons").val();
+            var dataId   = $("#ID_MediConsu").val();
+
+            $.ajax({
+                type: 'POST',
+                url: '../../Paciente/jSonConsult',
+                data: { Data_Cons: dataCons, id: dataId },
+                success: function (response) {
+
+                    if (response && response.success) {
+
+                        $('#conteuHorar').html('');
+                        $('#conteuHorar').append('<center>');
+
+                        for (var i = 0; i < response.consult.length; ++i) {
+
+                            $('#conteuHorar').append('<button id="openModal" class="btn btn-primary" btn-block data-background-color="green" name="Hora_Cons" value=' +
+                                response.consult[i].DtCons + '>'+response.consult[i].DtCons+'</button>');
+
+                        }
+
+                        if(response.consult.length == 0){
+                            $('#conteuHorar').append('Sentimos muito, mas não existem horários vagos neste dia :(');
+                        }
+
+                        $('#conteuHorar').append('</center>');
+                    }
+
+                }
+            });
+        });
+
+        $(document).ready(function () {
+            $("#Data_Cons").trigger("change");
+        });
+
+    </script>
+}
+
+
+@if (Modulo == "Paciente/Confirma")
+{
+    <script>
+
+        $(document).on('click', '#ChangeDate', function () {
+            setTimeout(function(){
+                $("#Data_Cons").trigger("change");
+            }, 500);
+        });
+
+        $(document).on('click', 'a.dtp-select-day.selected', function () {
+            setTimeout(function () {
+                $("#Data_Cons").trigger("change");
+            }, 500);
+        });
+
+        $(document).on("click", "#openModal", function(){
+            $("#DataClick").val($("#Data_Cons").val());
+            $("#HoraClick").val($(this).val());
+
+            $("#Data_Consu").html($("#Data_Cons").val() +" - "+ $(this).val());
+            $("#Medi_Consu").html($("#medicContent").html());
+            $("#Cons_Consu").html($("#consuContent").html());
+
+            $("#myModal").modal('toggle');
+        });
+
+        $("#iconClick").on("click", function(){
+            $("#Data_Cons").focus();
+        });
+
+        $("#Data_Cons").change( function () {
+
+            var dataCons = $("#Data_Cons").val();
+            var dataId   = $("#ID_MediConsu").val();
+
+            $.ajax({
+                type: 'POST',
+                url: '../../Paciente/jSonConsult',
+                data: { Data_Cons: dataCons, id: dataId },
+                success: function (response) {
+
+                    if (response && response.success) {
+
+                        $('#conteuHorar').html('');
+                        $('#conteuHorar').append('<center>');
+
+                        for (var i = 0; i < response.consult.length; ++i) {
+
+                            $('#conteuHorar').append('<button id="openModal" class="btn btn-primary" btn-block data-background-color="green" name="Hora_Cons" value=' +
+                                response.consult[i].DtCons + '>'+response.consult[i].DtCons+'</button>');
+
+                        }
+
+                        if(response.consult.length == 0){
+                            $('#conteuHorar').append('Sentimos muito, mas não existem horários vagos neste dia :(');
+                        }
+
+                        $('#conteuHorar').append('</center>');
+                    }
+
+                }
+            });
+        });
+
+
+    </script>
+}
+
+@if (Modulo == "Paciente/Edit")
+{
+    @Scripts.Render("~/bundles/inputmask")
+
+    <script>
+        $(document).ready(function(){
+            $("#Telefone_Paci").inputmask({ "mask": "(99) [9]9999-9999", "placeholder": "" });
+            $("#CEP_Paci").inputmask({ "mask": "99999-999", "placeholder": "" });
+            $("#CPF_Paci").inputmask({ "mask": "999.999.999-99", "placeholder": "" });
+            $("#RG_Paci").inputmask({ "mask": "99.999.999-9", "placeholder": "" });
+        });
+    </script>
+
+
+    <script>
+
+        $("#CEP_Paci").on("keypress", function (e) {
+            if( $("#CEP_Paci").val().length == 8 && e.keyCode != 9){
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        $("#CPF_Paci").on("keypress", function (e) {
+            if ($("#CPF_Paci").val().length == 15 && e.keyCode != 9) {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+
+        $("#Telefone_Paci").on("keypress", function (e) {
+            if( $("#Telefone_Paci").val().length == 14 && e.keyCode != 9){
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        /*  $(document).ajaxStart(function () {
+              $("#loading").attr("style", "visibility: visible");
+          }).ajaxStop(function () {
+              $("#loading").attr("style", "visibility: hidden");
+          });*/
+
+        $("#CEP_Paci").on("blur", function () {
+
+            var url = "https://viacep.com.br/ws/" + $("#CEP_Paci").val().replace(/\D/g, '') + "/json/?callback=";
+
+            //    console.log(url);
+
+            $.ajax({
+                url: url,
+                type: 'GET',
+                success: function (dados) {
+
+                    var end = dados.logradouro + " " + dados.complemento;
+
+                    //          console.log(dados);
+
+                    if(dados.erro != true){
+                        $("#Cidade_Paci").val(dados.localidade);
+                        $("#Estado_Paci").val(dados.uf);
+                        $("#Endereco_Paci").val(end);
+                        $("#Bairro_Paci").val(dados.bairro);
+
+                        $("#Cidade_Paci").parent().removeClass("is-empty");
+                        $("#Estado_Paci").parent().removeClass("is-empty");
+                        $("#Endereco_Paci").parent().removeClass("is-empty");
+                        $("#Bairro_Paci").parent().removeClass("is-empty");
+
+
+                    } else {
+                        $("#Cidade_Paci").val("");
+                        $("#Estado_Paci").val("");
+                        $("#Endereco_Paci").val("");
+                        $("#Bairro_Paci").val("");
+                    }
+
+
+                }, error: function (x, y, err) {
+                    console.log("Operação não efetuada");
+                }
+            });
+
+        });
+
+
+
+        $(document).ready(function() {
+
+            $("#edit").validate({
+                rules:
+                {
+                    Email_Paci:
+                    {
+                        required: true,
+                        minlength: 10,
+                        email: true
+                    },
+                    Nome_Paci:
+                    {
+                        required: true,
+                        minlength: 5
+                    },
+                    Telefone_Paci:
+                    {
+                        minlength: 14
+                    },
+                    CEP_Paci:
+                    {
+                        required: true,
+                        minlength: 8
+                    },
+                    Endereco_Paci:
+                    {
+                        required: true,
+                        minlength: 5
+                    },
+                    Cidade_Paci:
+                    {
+                        required: true,
+                        minlength: 3
+                    },
+                    Estado_Paci:
+                    {
+                        required: true,
+                        minlength: 2
+                    },
+                    CPF_Paci:
+                    {
+                        required: true,
+                        minlength: 12
+                    },
+                    RG_Paci:
+                    {
+                        required: true,
+                        minlength: 12
+                    },
+                    Senha_UsuPaci:
+                    {
+                        required: true,
+                        minlength: 5
+                    },
+                    Confirma_UsuPaci:
+                    {
+                        required: true,
+                        minlength: 5,
+                        equalTo: "#Senha_UsuPaci"
+                    }
+                },
+                messages:
+                {
+                    Email_Paci:
+                    {
+                        required: "Campo E-Mail necessário",
+                        minlength: jQuery.validator.format("Por favor, insira ao menos 10 caracteres"),
+                        email: "Por favor, entre um E-mail válido"
+                    },
+                    Nome_Paci:
+                    {
+                        required: "Campo Nome necessário",
+                        minlength: jQuery.validator.format("Por favor, insira ao menos 5 caracteres")
+                    },
+                    Telefone_Paci:
+                    {
+                        minlength: jQuery.validator.format("Por favor, insira ao menos 10 caracteres")
+                    },
+                    CEP_Paci:
+                    {
+                        required: "Campo CEP necessário",
+                        minlength: jQuery.validator.format("Por favor, insira ao menos 8 caracteres")
+                    },
+                    Endereco_Paci:
+                    {
+                        required: "Campo Endereço necessário",
+                        minlength: jQuery.validator.format("Por favor, insira ao menos 5 caracteres")
+                    },
+                    Cidade_Paci:
+                    {
+                        required: "Campo Cidade necessário",
+                        minlength: jQuery.validator.format("Por favor, insira ao menos 3 caracteres")
+                    },
+                    Estado_Paci:
+                    {
+                        required: "Campo Estado necessário",
+                        minlength: jQuery.validator.format("Por favor, insira ao menos 2 caracteres")
+                    },
+                    CPF_Paci:
+                    {
+                        required: "Campo CPF necessário",
+                        minlength: jQuery.validator.format("Por favor, insira ao menos 5 caracteres")
+                    },
+                    RG_Paci:
+                    {
+                        required: "Campo RG necessário",
+                        minlength: jQuery.validator.format("Por favor, insira ao menos 12 caracteres")
+                    },
+                    Senha_UsuPaci:
+                    {
+                        required: "Por favor insira a Senha",
+                        minlength: "Senha muito curta"
+                    },
+                    Confirma_UsuPaci:
+                    {
+                        required: "Por favor confirme sua Senha",
+                        minlength: "Senha muito curta",
+                        equalTo: "Senhas não coincidem"
+                    }
+                }
+            });
+
+        });
+    </script>
+    <style>
+        .error {
+            color: #c13434 !important;
+        }
+    </style>
+
+    if (ViewBag.Sucesso != null)
+    {
+        <script>
+            $('.alert').addClass('alert-success');
+            $('.alert').append('Dados Atualizados.');
+            $('.alert').css('padding', '15');
+
+            $(".alert").alert();
+        </script>
+    }
+}
+
+
+
+@RenderSection("scripts", required: false)
+
+</html>

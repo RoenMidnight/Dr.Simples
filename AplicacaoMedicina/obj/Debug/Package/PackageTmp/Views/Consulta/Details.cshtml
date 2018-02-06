@@ -1,0 +1,39 @@
+﻿@model AplicacaoMedicina.Models.Consulta
+
+@{ 
+    Layout = "";
+}
+
+<div class="modal-header">
+<h4>Informações da Consulta</h4>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Consulta</h2>            
+            <dl>
+                <dt> <b>Data:</b> @Html.DisplayFor(model => model.Data_Consa)                     </dt>
+                <dt> <b>Nome Social Paciente:</b> @Html.DisplayFor(model => model.Situacao_Consa) </dt>
+
+            </dl>
+            <hr />
+            <h2>Consultório</h2>
+            <dl>
+                <dt> <b>Consulório:</b> @Html.DisplayFor(model => model.MedicoConsultorio.Consultorio.Nome_Consu)         </dt>
+                <dt> <b>Número:</b> @Html.DisplayFor(model => model.MedicoConsultorio.Consultorio.Numero_Consu)           </dt>
+                <dt> <b>Telefone:</b> @Html.DisplayFor(model => model.MedicoConsultorio.Consultorio.Telefone_Consu)       </dt>
+                <dt> <b>E-Mail:</b> @Html.DisplayFor(model => model.MedicoConsultorio.Consultorio.Email_Consu)            </dt>
+                <dt> <b>Responsável:</b> @Html.DisplayFor(model => model.MedicoConsultorio.Consultorio.Responsavel_Consu) </dt>
+            </dl>
+            <hr />
+            <h2>Médico</h2>
+            <dl>
+                <dt> <b>Médico:</b> @Html.DisplayFor(model => model.MedicoConsultorio.Medico.Nome_Medi)         </dt>
+                <dt> <b>CRM:</b> @Html.DisplayFor(model => model.MedicoConsultorio.Medico.CRM_Medi)             </dt>
+                <dt> <b>CPF:</b> @Html.DisplayFor(model => model.MedicoConsultorio.Medico.CPF_Medi)             </dt>
+                <dt> <b>Telefone:</b> @Html.DisplayFor(model => model.MedicoConsultorio.Medico.Telefone_Medi)   </dt>
+                <dt> <b>E-Mail:</b> @Html.DisplayFor(model => model.MedicoConsultorio.Medico.Email_Medi)        </dt>                
+            </dl>
+        </div>
+    </div>
+</div>

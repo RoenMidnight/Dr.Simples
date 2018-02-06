@@ -1,0 +1,350 @@
+﻿@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Doutor Simples - Saúde ao seu alcance! </title>
+    <meta name="description" content="Doutor Simples é um sistema de agendamento online para agilizar as interações entre médicos e pacientes." />
+    <meta name="keywords" content="doutor,simples,agendamento,consulta,consultorio,médico" />
+    <meta name="author" content="Overload Technology" />
+
+    <!-- Favicons (created with http://realfavicongenerator.net/)-->
+    <link rel="apple-touch-icon" sizes="57x57" href="../Content/img/favicons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="../Content/img/favicons/apple-touch-icon-60x60.png">
+    <link rel="icon" type="image/png" href="../Content/img/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="../Content/img/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="../Content/img/favicons/manifest.json">
+    <link rel="shortcut icon" href="../Content/img/favicons/favicon.ico">
+    <meta name="msapplication-TileColor" content="#00a8ff">
+    <meta name="msapplication-config" content="../Content/img/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- Normalize -->
+    <link rel="stylesheet" type="text/css" href="~/Content/css/normalize.css">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="~/Content/css/bootstrap.css">
+    <!-- Owl -->
+    <link rel="stylesheet" type="text/css" href="~/Content/css/owl.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" type="text/css" href="~/Content/css/animate.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" type="text/css" href="~/fonts/font-awesome-4.1.0/css/font-awesome.min.css">
+    <!-- Elegant Icons -->
+    <link rel="stylesheet" type="text/css" href="~/Content/fonts/eleganticons/et-icons.css">
+    <!-- Main style -->
+    <link rel="stylesheet" type="text/css" href="~/Content/css/cardio.css">
+    <!--CUSTOM CSS-->
+    <link rel="stylesheet" type="text/css" href="~/Content/css/css_fix.css">
+
+    <link rel="stylesheet" type="text/css" href="~/Content/font-Roboto.css">
+ 
+
+    <!-- Hotjar Tracking Code for doutorsimples.com.br -->
+    <script>
+        (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:612121,hjsv:5};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+</head>
+
+<body>
+    <div class="preloader">
+        <img src="~/Content/img/loader.gif" alt="Preloader image">
+    </div>
+    <nav class="navbar">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Mudar navegação</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#intro" style="display:inline-flex">
+                <img src="../Content/img/logo.png" data-active-url="../Content/img/logo-active.png" alt="" style="">
+                <h5 style="color:white;padding-left:3px;text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">Pacientes</h5>
+            </a>
+        </div>       
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right main-nav">
+                <li><a href="#cadastro">Cadastro</a></li>
+                <li><a href="#contato">Contato</a></li>
+                <li><a href="/Home/IndexMed">Médicos</a></li>
+                <li><a href="/Home/About">Termos</a></li>
+                <li><a href="/UsuarioPaciente/Login" class="btn btn-blue">Entrar</a></li>
+            </ul>
+        </div>
+    </nav>
+    <nav class="navbar" style="top:150px">
+        <div class="container">            
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <section id="search-box">
+                    <div class="search-box" style="display:inline-flex;">
+                        <div class="name">
+                            <label for="name" class="label-name roboto slate-text">O que você gostaria de Agendar?</label>                            
+                            <input id="name" class="search-input slate-text omnes ng-untouched ng-pristine ng-valid tt-input"
+                                   placeholder="Tipo de especialista..." type="text" />                            
+                        </div>
+
+                        <div class="where input-block">
+                            <label for="where" class="label-name roboto slate-text">Onde?</label>                         
+                            <input id="where" class="search-input slate-text omnes tt-input ng-untouched ng-pristine ng-valid" 
+                                   placeholder="Digite seu Bairro ou CEP" type="text" 
+                                   style="position: relative; vertical-align: top; border-bottom-left-radius: 0px;"
+                                   />                     
+                        </div>
+
+                        <div class="payment">
+                            <label for="payment" class="label-name roboto slate-text">Forma de Pagamento</label>                            
+                            <input id="payment" class="search-input slate-text omnes tt-input ng-untouched ng-pristine ng-valid"
+                                    placeholder="Escolha uma opção" type="text" 
+                                   style="position: relative; vertical-align: top; border-bottom-left-radius: 0px;"
+                                   />                           
+                        </div>
+
+                        <button type="submit" class="search-button shamrock-green-background">
+                            <i class="material-icons">search</i>
+                        </button>
+                    </div>
+                </section>
+            </div>     
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <header id="intro">
+        <div class="container">
+            <div class="table">
+                <div class="header-text">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <h3 class="light white">Doutor Simples</h3>
+                            <h1 class="white typed">Agende sua consulta já</h1>
+                            <span id="cadastro" class="typed-cursor">!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section>
+        <div class="cut cut-top"></div>
+        <div class="container">
+            <div class="row intro-tables">
+                <div class="col-md-12">
+                    <div class="intro-table intro-table-hover">
+                        <h5 class="white heading hide-hover">Começe a usar gratuitamente</h5>
+                        <div class="bottom">
+                            <h4 class="white heading small-heading no-margin regular">Cadastre-se hoje</h4>
+                            <h4 class="white heading small-pt">Custo ZERO</h4>
+                            <a href="/Paciente/Create" class="btn btn-white-fill expand">Registrar</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section id="services" class="section section-padded">
+        <div class="container">
+            <div class="row text-center title">
+                <h2>Serviço</h2>
+                <h4 class="light muted">Agendamentos online agilizando o processo de consultas</h4>
+            </div>
+            <div class="row services">
+                <div class="col-md-4">
+                    <div class="service">
+                        <div class="icon-holder">
+                            <img src="~/Content/img/icons/world.png" alt="" class="icon">
+                        </div>
+                        <h4 class="heading">Agendamento Online</h4>
+                        <p class="description">Facilite sua vida, agende suas consultas em qualquer horário e em qualquer lugar com os melhores médicos da região.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service">
+                        <div class="icon-holder">
+                            <img src="~/Content/img/icons/like.png" alt="" class="icon">
+                        </div>
+                        <h4 class="heading">Sistema de Avaliação</h4>
+                        <p class="description">Avalie como foi sua consulta e favorite seus médicos. Faça o trabalho deles ser reconhecido.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service">
+                        <div class="icon-holder">
+                            <img src="~/Content/img/icons/calendar.png" alt="" class="icon">
+                        </div>
+                        <h4 class="heading">Controle e Aviso de Consultas</h4>
+                        <p class="description">Fique tranquilo que iremos sempre te lembrar de suas consultas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cut cut-bottom"></div>
+    </section>
+    <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content modal-popup">
+                <a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
+                <h3 class="white">Cadastrar</h3>
+                <form action="" class="popup-form">
+                    <input id="Nome" type="text" class="form-control form-white" placeholder="Nome Completo">
+                    <input id="Email" type="text" class="form-control form-white" placeholder="E-mail">
+                    <input id="Telefone" type="text" class="form-control form-white" placeholder="Telefone">
+                    <div class="dropdown">
+                        <button id="dLabel" class="form-control form-white dropdown" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Plano de cobrança
+                        </button>
+                        <ul class="dropdown-menu animated fadeIn" role="menu" aria-labelledby="dLabel">
+                            <li class="animated lightSpeedIn"><a href="#">Pacote Mensal</a></li>
+                            <li class="animated lightSpeedIn"><a href="#">Pacote Associado</a></li>
+                            <li class="animated lightSpeedIn"><a href="#">Teste</a></li>
+                        </ul>
+                    </div>
+                    <div class="checkbox-holder text-left">
+                        <div class="checkbox">
+                            <input type="checkbox" value="None" id="squaredOne" name="check" />
+                            <!--label for="squaredOne"><span>I Agree to the <strong>Terms &amp; Conditions</strong></span></label-->
+                        </div>
+                    </div>
+                    <button id="Enviar" type="submit" class="btn btn-submit">Enviar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <footer id="contato">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 text-center-mobile">
+                    <h3 class="white">Use gratuitamente</h3>
+                    <h5 class="light regular light-white">Não deixe sua saúde em segundo lugar!</h5>
+                    <a href="#" class="btn btn-blue ripple trial-button">Começar a usar</a>
+                </div>
+                <div class="col-sm-6 text-center-mobile">
+                    <h3 class="white">Horário de suporte <span class="open-blink"></span></h3>
+                    <div class="row opening-hours">
+                        <div class="col-sm-6 text-center-mobile">
+                            <h5 class="light-white light">Seg - Sex</h5>
+                            <h3 class="regular white">9:00 - 22:00</h3>
+                        </div>
+                        <div class="col-sm-6 text-center-mobile">
+                            <h5 class="light-white light">Sab</h5>
+                            <h3 class="regular white">10:00 - 18:00</h3>
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-blue ripple trial-button" data-toggle="modal" data-target="#modal1">Abrir chamado de suporte</a>
+                </div>
+            </div>
+            <div class="row bottom-footer text-center-mobile">
+                <div class="col-sm-8">
+                    <p>&copy; 2017 All Rights Reserved. Overload Technology</p>
+                </div>
+                <div class="col-sm-4 text-right text-center-mobile">
+                    <!--ul class="social-footer">
+                    <li><a href="http://www.facebook.com/pages/Codrops/159107397912"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="http://www.twitter.com/codrops"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="https://plus.google.com/101095823814290637419"><i class="fa fa-google-plus"></i></a></li>
+                    </ul-->
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Holder for mobile navigation -->
+    <div class="mobile-nav">
+        <ul></ul>
+        <a href="#" class="close-link"><i class="arrow_up"></i></a>
+    </div>
+    <!-- Scripts -->
+    <script src="../../Scripts/js/jquery-1.11.1.min.js"></script>
+    <script src="../../Scripts/js/owl.carousel.min.js"></script>
+    <script src="../../Scripts/js/bootstrap.min.js"></script>
+    <script src="../../Scripts/js/wow.min.js"></script>
+    <script src="../../Scripts/js/typewriter.js"></script>
+    <script src="../../Scripts/js/jquery.onepagenav.js"></script>
+    <script src="../../Scripts/js/main.js"></script>
+    <script src="../../Scripts/TypeHead.js" type="text/javascript"></script>
+
+    <script>
+        $(document).ready(function(){
+            var areas = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.whitespace,
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                prefetch: '../../Home/GetAreas'
+            });
+
+            $("#name").typeahead(null, {
+                name: 'areas',
+                source: areas
+            });
+
+            var convs = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.whitespace,
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                prefetch: '../../Home/GetConv'
+            });
+
+            $("#payment").typeahead(null, {
+                name: 'convs',
+                source: convs
+            });
+      });
+    </script>
+
+    <script>
+        var Data = new Date();
+        var Hora = Data.getHours();
+        var DiaS = Data.getDay();
+
+        if (DiaS == 0 || DiaS == 6) {
+            if (Hora < 10 || Hora > 17) {
+                $('.open-blink').append('<style>.open-blink{background-color:#a94442 !important} .open-blink:before{background-color:#a94442 !important}</style>');
+            }
+        } else {
+            if (Hora < 9 || Hora > 21) {
+                $('.open-blink').append('<style>.open-blink{background-color:#a94442 !important} .open-blink:before{background-color:#a94442 !important}</style>');
+            }
+        }       
+
+    </script>
+
+    <script>
+        $("#Enviar").on('click', function () {
+            event.preventDefault();
+
+            $.ajax({
+                url: '/Home/EnviaPedido',
+                type: 'Post',
+                data:{Nome:$('#Nome').val(), Email:$('#Email').val(), Telefone:$('#Telefone').val(), Subject: $('#dLabel').html()},
+                success: function (dados) {
+			
+                    if (dados.success){
+                        $('#modal1').modal('toggle');
+                    }
+               
+
+                }, error: function (x, y, err) {
+                    // alert("Operação não efetuada");
+                }
+            });
+        });
+    </script>
+    
+
+</body>
+
+</html>
+

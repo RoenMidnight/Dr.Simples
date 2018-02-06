@@ -1,0 +1,117 @@
+﻿@{ 
+    Layout = "";
+}
+@model AplicacaoMedicina.Models.UsuarioConsultorio
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png" />
+    <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>Material Dashboard by Creative Tim</title>
+
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+
+    @Styles.Render("~/Content/doctorStyles/css")
+
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+
+    <div class="wrapper">
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+
+                    <div class="col-md-4" style="margin-left: 33.3333333%; margin-top: 15%;">
+                        <div class="card card-profile">
+
+                            <div class="card-avatar">
+
+                                <a href="">
+                                    <img class="img" src="~/Content/images/img.jpg" />
+                                </a>
+
+                            </div>
+
+                            <div class="content">
+
+                                <style>
+                                    .row {
+                                        width: 90% !important;
+                                        padding-left: 10% !important;
+                                        padding-right: 0px !important;
+                                        margin: 0;
+                                    }
+                                </style>
+                                <h6 class="category text-gray"></h6>
+                                <h4 class="card-title">Login - Dr. Med</h4>
+                                <p>Acesso Restrito</p>
+
+                                @using (Html.BeginForm())
+                                {
+                                    @Html.ValidationSummary(true)
+
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group label-floating">
+                                                <label class="control-label" style="left: 38%;">E-mail</label>
+                                                @Html.EditorFor(model => model.Usuario_UsuCons, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Usuario_UsuCons)
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group label-floating">
+                                                <label class="control-label" style="left: 38%;">Senha</label>
+                                                @Html.PasswordFor(model => model.Senha_UsuCons, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.Senha_UsuCons)
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary pull-center">Login</button>
+                                    <div class="clearfix"></div>
+
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</body>
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/doctorScripts")
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+<script type="text/javascript">
+    	$(document).ready(function(){
+
+			// Javascript method's body can be found in assets/js/demos.js
+        	demo.initDashboardPageCharts();
+
+    	});
+</script>
+
+</html>

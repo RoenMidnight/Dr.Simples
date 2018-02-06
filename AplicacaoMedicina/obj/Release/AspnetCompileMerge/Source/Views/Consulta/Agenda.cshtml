@@ -1,0 +1,98 @@
+﻿@model IEnumerable<AplicacaoMedicina.Models.Consulta>
+@{
+    ViewBag.Title = "Agenda";
+    Layout = "~/Views/Shared/_LayoutMedico.cshtml";
+
+    var culture = new System.Globalization.CultureInfo("pt-BR");
+    var DataFormata = System.Globalization.CultureInfo.CurrentCulture.TextInfo;
+
+    string testa = "";
+}
+
+<div>
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Proximas Consultas </h3>
+            </div>
+            <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                    <form action="/Consulta/Agenda" method="post">
+                        <div class="input-group">
+                            <input id="pesquisa" name="pesquisa" type="text" class="form-control" placeholder="Procurar por paciente...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="submit">Ir!</button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Maio <small> 2017</small></h2>
+
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                <!--ul class="dropdown-menu" role="menu">
+                                  <li><a href="#">Settings 1</a>
+                                  </li>
+                                  <li><a href="#">Settings 2</a>
+                                  </li>
+                                </ul-->
+                            </li>
+                            <li>
+                                <a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+
+                        Mostar:
+                        <button> Dia </button>
+                        <button> Semana </button>
+                        <button> Mês </button>
+
+                        @foreach (var item in Model){
+                            if (item.Data_Consa.ToString("dd/MM/yyyy") != testa && testa != "")
+                            {
+                                @Html.Raw("</div>");
+
+                            }
+
+                            if (item.Data_Consa.ToString("dd/MM/yyyy") != testa)
+                            {
+                                    @Html.Raw("<div class=x_panel>");                              
+                                    <h3>@Html.DisplayFor(modelItem => item.Data_Consa) - @DataFormata.ToTitleCase(culture.DateTimeFormat.GetDayName(item.Data_Consa.DayOfWeek)) </h3>
+                                    <hr />
+                                testa = item.Data_Consa.ToString("dd/MM/yyyy");
+                            }
+                                <h4>
+                                    <a href="/Consulta/Prontuario/@item.ID_Consa">
+                                        Prontuário
+                                    </a>
+
+                                    <a href="@Url.Action("GetPacienteInfo", "Paciente", new { id = item.PacienteConvenios.Id_PaciConv})" data-toggle="modal" data-target="#modalPaciente" data-model="">
+                                        @item.Data_Consa.ToString("HH:mm") - @Html.DisplayFor(modelItem => item.PacienteConvenios.Paciente.Nome_Paci)
+                                    </a>
+                                </h4>
+
+                        }
+                                @Html.Raw("</div>");
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,43 @@
+﻿@model AplicacaoMedicina.Models.MedicoConsultorio
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutMedico.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>MedicoConsultorio</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Consultorio.Nome_Consu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Consultorio.Nome_Consu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Medico.Nome_Medi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Medico.Nome_Medi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ativo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ativo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_MediConsu }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
